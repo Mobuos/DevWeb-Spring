@@ -41,14 +41,12 @@
 							<td th:text="${cliente.nome}"></td>
 							<td th:text="${cliente.email}"></td>
 							<td colspan="2">
-								<a class="btn btn-info btn-sm" th:href="@{/admin/cliente/editar/{CPF} (cpf=${cliente.CPF}) }"
-									role="button"> 
-									<span class="oi oi-brush" title="Editar" aria-hidden="true"> </span>
+								<a class="btn btn-info btn-sm"
+									th:href="@{/admin/cliente/editar/{cpf}(cpf=${cliente.CPF}) }" role="button"> 
+									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 								</a>
-								<button
-									th:id="${'btn_clientes/excluir/' + cliente.CPF}"
-									type="button" class="btn btn-danger btn-sm"
-									data-toggle="modal" data-target="#myModal">
+								<button th:id="${#strings.concat('btn_admin/cliente/excluir/',cliente.CPF)}" 
+									type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
 								</button>
 							</td>

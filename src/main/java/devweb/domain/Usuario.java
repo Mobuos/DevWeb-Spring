@@ -6,8 +6,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Usuario")
@@ -15,7 +13,7 @@ import javax.validation.constraints.Size;
 public class Usuario extends AbstractEntity<Long>{
 
 	@Column(nullable = true, unique = true, length = 14)
-	@NotNull(message = "{NotNull.usuario.CPF}")
+	@NotBlank(message = "{NotBlank.usuario.CPF}")
 	private String CPF;
 
 	@Column(nullable = true, unique = false, length = 40)
@@ -23,7 +21,7 @@ public class Usuario extends AbstractEntity<Long>{
 	private String email;
 
 	@Column(nullable = true, unique = false, length = 40)
-	@NotNull(message = "{NotNull.usuario.senha}")
+	@NotBlank(message = "{NotBlank.usuario.senha}")
 	private String senha;
 
 	@Column(nullable = true, unique = false, length = 40)
@@ -39,25 +37,25 @@ public class Usuario extends AbstractEntity<Long>{
 	@Column(nullable = true, unique = false, length = 50)
 	private String data_nascimento;
 	
-	public Usuario() {
-		this.CPF = null;
-		this.nome = null;
-		this.senha = null;
-		this.sexo = null;
-		this.telefone = null;
-		this.data_nascimento = null;
-	}
+	// public Usuario() {
+	// 	this.CPF = null;
+	// 	this.nome = null;
+	// 	this.senha = null;
+	// 	this.sexo = null;
+	// 	this.telefone = null;
+	// 	this.data_nascimento = null;
+	// }
 
-	public Usuario(String CPF, String email, String senha, String nome, Character sexo, 
-			String telefone, String data_nascimento) {
-        this.CPF = CPF;
-        this.email = email;
-        this.senha = senha;
-        this.nome = nome;
-        this.sexo = sexo;
-        this.telefone= telefone;
-        this.data_nascimento = data_nascimento;
-    }
+	// public Usuario(String CPF, String email, String senha, String nome, Character sexo, 
+	// 		String telefone, String data_nascimento) {
+    //     this.CPF = CPF;
+    //     this.email = email;
+    //     this.senha = senha;
+    //     this.nome = nome;
+    //     this.sexo = sexo;
+    //     this.telefone= telefone;
+    //     this.data_nascimento = data_nascimento;
+    // }
 	
 	public String getCPF() {
 		return CPF;
