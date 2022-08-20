@@ -23,6 +23,8 @@ public class SAgendamentoApplication {
 	public CommandLineRunner demo(IClienteDAO clienteDAO) {
 		return (args) -> {
 
+			
+
 			Cliente c1 = new Cliente();
 			c1.setCPF("43113484871");
 			c1.setNome("João Dini");

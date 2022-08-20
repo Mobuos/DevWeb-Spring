@@ -23,7 +23,7 @@ public class Cliente extends Usuario{
     }
 	
 	public Cliente(Usuario u) {
-		super(u.getCPF(),u.getEmail() , u.getSenha(), u.getNome(), u.getSexo(),u.getTelefone(), u.getData_nascimento());
+		super(u.getCPF(), u.getEmail() , u.getSenha(), u.getNome(), u.getSexo(),u.getTelefone(), u.getData_nascimento());
 		
 	}
 

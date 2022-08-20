@@ -48,8 +48,8 @@ public class Usuario {
 	public String getCPF() {
 		return CPF;
 	}
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setCPF(String cpf) {
+		CPF = cpf;
 	}
 	public String getEmail() {
 		return email;
