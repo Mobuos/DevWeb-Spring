@@ -45,9 +45,9 @@ public class AdminController {
 		return "redirect:/admin/clientes/listar";
 	}
 	
-	@GetMapping("cliente/editar/{cpf}")
-	public String preEditar(@PathVariable("cpf") String cpf, ModelMap model) {
-		model.addAttribute("cliente", service.buscarPorCPF(cpf));
+	@GetMapping("cliente/editar/{CPF}")
+	public String preEditar(@PathVariable("CPF") String CPF, ModelMap model) {
+		model.addAttribute("cliente", service.buscarPorCPF(CPF));
 		return "admin/cliente/cadastro";
 	}
 	
@@ -65,12 +65,12 @@ public class AdminController {
 		return "redirect:/admin/clientes/listar";
 	}
 	
-	@GetMapping("cliente/excluir/{cpf}")
-	public String excluir(@PathVariable("cpf") String cpf, ModelMap model) {
-		// if (service.clienteTemAgendamentos(cpf)) {
+	@GetMapping("cliente/excluir/{CPF}")
+	public String excluir(@PathVariable("CPF") String CPF, ModelMap model) {
+		// if (service.clienteTemAgendamentos(CPF)) {
 		// 	model.addAttribute("fail", "Cliente não excluída. Possui livro(s) vinculado(s).");
 		// } else {
-			service.excluir(cpf);
+			service.excluir(CPF);
 			model.addAttribute("sucess", "Cliente excluída com sucesso.");
 		// }
 		return listar(model);

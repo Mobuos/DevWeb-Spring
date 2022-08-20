@@ -8,7 +8,7 @@ import javax.persistence.Table;
 public class Cliente extends Usuario{	
 	
 	public Cliente(){
-		super("VAZIO", "Usuario_VAZIO", "Usuario_VAZIO", "Usuario_VAZIO", 'M', "Usuario_VAZIO", "Usuario_VAZIO");
+		super();
 	}
 
 	public Cliente(String cpf,

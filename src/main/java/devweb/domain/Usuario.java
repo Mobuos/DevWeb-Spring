@@ -12,19 +12,19 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Usuario {
 	@Id
-	@Column(length = 14)
+	@Column(nullable = true, unique = true, length = 14)
 	private String CPF;
 
 	@Column(nullable = true, unique = false, length = 40)
 	private String email;
 
-	@Column(nullable = false, unique = false, length = 40)
+	@Column(nullable = true, unique = false, length = 40)
 	private String senha;
 
-	@Column(nullable = false, unique = false, length = 40)
+	@Column(nullable = true, unique = false, length = 40)
 	private String nome;
 
-	@Column(nullable = false, unique = false)
+	@Column(nullable = true, unique = false)
 	private Character sexo;
 
 	@Column(nullable = true, unique = false, length = 15)
@@ -33,7 +33,15 @@ public class Usuario {
 	@Column(nullable = true, unique = false, length = 50)
 	private String data_nascimento;
 	
-	
+	public Usuario() {
+		this.CPF = null;
+		this.nome = null;
+		this.senha = null;
+		this.sexo = null;
+		this.telefone = null;
+		this.data_nascimento = null;
+	}
+
 	public Usuario(String CPF, String email, String senha, String nome, Character sexo, 
 			String telefone, String data_nascimento) {
         this.CPF = CPF;

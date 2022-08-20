@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 @Component
-public class ErrorViewController implements ErrorViewResolver{
-    
-    @Override
+public class ErrorViewController implements ErrorViewResolver {
+
+	@Override
 	public ModelAndView resolveErrorView(HttpServletRequest request, HttpStatus status, Map<String, Object> map) {
 		
 		ModelAndView model = new ModelAndView("error");

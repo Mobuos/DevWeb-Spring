@@ -24,7 +24,7 @@
 			<div th:replace="fragments/alert"></div>
 
 			<form
-				th:action="${cliente.cpf == null} ? @{/admin/cliente/salvar} : @{/admin/cliente/editar}"
+				th:action="${cliente.CPF == null} ? @{/admin/cliente/salvar} : @{/admin/cliente/editar}"
 				th:object="${cliente}" method="POST">
 				
 				<div class="form-row">
@@ -41,11 +41,15 @@
 
 					<div class="form-group col-md-6">
 						<label for="CPF">CPF</label> 
-						<input type="text" class="form-control" id="CPF" placeholder="__.___.___/____-__"
-							th:readonly="${cliente.cpf != null}"
+						<input type="text" class="form-control" id="CPF" placeholder=""
+							th:readonly="${cliente.CPF != null}"
+							autofocus="autofocus" th:field="*{CPF}"
+							th:classappend="${#fields.hasErrors('CPF')} ? is-invalid" />
+						<!-- <input type="text" class="form-control" id="CPF" placeholder="__.___.___/____-__"
+							th:readonly="${cliente.CPF != null}"
 							autofocus="autofocus" th:field="*{CPF}"
 							th:classappend="${#fields.hasErrors('CPF')} ? is-invalid" 
-							data-mask="00.000.000/0000-00" data-mask-reverse="true" />
+							data-mask="00.000.000/0000-00" data-mask-reverse="true" /> -->
 						                               
 						<div class="invalid-feedback">
 							<span th:errors="*{CPF}"></span>
@@ -53,7 +57,7 @@
 					</div>
 				</div>
 
-				<input type="hidden" id="id" th:field="*{id}" />
+				<input type="hidden" CPF="CPF" th:field="*{CPF}" />
 				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 			</form>
 		</div>
