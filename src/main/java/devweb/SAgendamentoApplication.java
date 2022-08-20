@@ -23,14 +23,14 @@ public class SAgendamentoApplication {
 	public CommandLineRunner demo(IClienteDAO clienteDAO) {
 		return (args) -> {
 
-			Cliente c1 = new Cliente();
-			c1.setCPF("43113484871");
-			c1.setNome("João Dini");
-			c1.setData_nascimento("02/10/2001");
-			c1.setEmail("copperbrjdmdini@gmail.com");
-			c1.setSenha("6422");
-			c1.setSexo('M');
-			clienteDAO.save(c1);
+			// Cliente c1 = new Cliente();
+			// c1.setCPF("43113484871");
+			// c1.setNome("João Dini");
+			// c1.setData_nascimento("02/10/2001");
+			// c1.setEmail("copperbrjdmdini@gmail.com");
+			// c1.setSenha("6422");
+			// c1.setSexo('M');
+			// clienteDAO.save(c1);
 						
 			// Editora e1 = new Editora();
 			// e1.setCNPJ("55.789.390/0008-99");

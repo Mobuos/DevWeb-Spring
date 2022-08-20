@@ -54,9 +54,9 @@ public class AdminController {
 	@PostMapping("cliente/editar")
 	public String editar(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr) {
 		
-		// Apenas rejeita se o problema não for com o CNPJ (CNPJ campo read-only) 
+		// Apenas rejeita se o problema não for com o CPF (CPF campo read-only) 
 		
-		if (result.getFieldErrorCount() > 1 || result.getFieldError("CNPJ") == null) {
+		if (result.getFieldErrorCount() > 1 || result.getFieldError("CPF") == null) {
 			return "admin/cliente/cadastro";
 		}
 

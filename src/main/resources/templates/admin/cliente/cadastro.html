@@ -55,6 +55,63 @@
 							<span th:errors="*{CPF}"></span>
 						</div>
 					</div>
+
+					<div class="form-group col-md-6">
+						<label for="email">Email</label> 
+						<input type="text" class="form-control" id="email" placeholder="jose@agendamento.com"
+							autofocus="autofocus" th:field="*{CPF}"
+							th:classappend="${#fields.hasErrors('email')} ? is-invalid" />		                               
+						<div class="invalid-feedback">
+							<span th:errors="*{email}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="senha">Senha</label> 
+						<input type="text" class="form-control" id="senha" placeholder=""
+							autofocus="autofocus" th:field="*{CPF}"
+							th:classappend="${#fields.hasErrors('senha')} ? is-invalid" />		                               
+						<div class="invalid-feedback">
+							<span th:errors="*{senha}"></span>
+						</div>
+					</div>
+
+					<!-- TODO: Usar formato apropriado -->
+					<div class="form-group col-md-6">
+						<label for="data_nascimento">Data de Nascimento</label> 
+						<input type="text" class="form-control" id="data_nascimento" placeholder="00/00/0000"
+							autofocus="autofocus" th:field="*{data_nascimento}"
+							th:classappend="${#fields.hasErrors('data_nascimento')} ? is-invalid" />		                               
+						<div class="invalid-feedback">
+							<span th:errors="*{data_nascimento}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="telefone">Telefone</label> 
+						<input type="text" class="form-control" id="telefone" placeholder="99 99999-9999"
+							autofocus="autofocus" th:field="*{telefone}"
+							th:classappend="${#fields.hasErrors('telefone')} ? is-invalid" />		                               
+						<div class="invalid-feedback">
+							<span th:errors="*{telefone}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="sexo">Sexo</label> 
+						<select id="sexo" class="form-control" th:field="*{sexo}"
+							th:classappend="${#fields.hasErrors('sexo')} ? is-invalid">
+							<option value="">Selecione</option>
+							<!-- <option th:each="sexo : ${sexos}" th:value="${sexo.id}"
+								th:text="${sexo.nome}"></option> -->
+							<option th:value="'M'" th:text="M"></option>
+							<option th:value="'F'" th:text="F"></option>
+						</select>
+
+						<div class="invalid-feedback">
+							<span th:errors="*{sexo}"></span>
+						</div>
+					</div>
 				</div>
 
 				<input type="hidden" CPF="CPF" th:field="*{CPF}" />

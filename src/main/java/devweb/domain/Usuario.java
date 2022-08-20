@@ -2,26 +2,32 @@ package devweb.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Usuario")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Usuario {
-	@Id
+public class Usuario extends AbstractEntity<Long>{
+
 	@Column(nullable = true, unique = true, length = 14)
+	@NotNull(message = "{NotNull.usuario.CPF}")
 	private String CPF;
 
 	@Column(nullable = true, unique = false, length = 40)
+	@NotBlank(message = "{NotBlank.usuario.email}")
 	private String email;
 
 	@Column(nullable = true, unique = false, length = 40)
+	@NotNull(message = "{NotNull.usuario.senha}")
 	private String senha;
 
 	@Column(nullable = true, unique = false, length = 40)
+	@NotBlank(message = "{NotBlank.usuario.nome}")
 	private String nome;
 
 	@Column(nullable = true, unique = false)
