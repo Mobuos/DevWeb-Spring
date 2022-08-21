@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import devweb.domain.Agendamento;
 import devweb.service.spec.IAgendamentoService;
+import devweb.service.spec.IProfissionalService;
 
 @Controller
 @RequestMapping("/profissional")
@@ -23,6 +24,9 @@ public class ProfissionalController {
 	
 	@Autowired
 	private IAgendamentoService service;
+
+	@Autowired
+	private IProfissionalService pService;
 
 	@GetMapping("/")
 	public String profissionalHome(ModelMap model) {
@@ -60,40 +64,48 @@ public class ProfissionalController {
 	
 	@PostMapping("horario/salvar")
 	public String salvar(@Valid Agendamento agendamento, BindingResult result, RedirectAttributes attr) {
-		
+		System.out.println("SALVANDO " + agendamento);
 		if (result.hasErrors()) {
 			return "profissional/horario/cadastro";
 		}
 		
+		// TODO: Usar CPF do usuário profissional
+		agendamento.setProfissional(pService.buscarPorCPF("12345678910"));
+		agendamento.setAgendado(false);
 		service.salvar(agendamento);
 		attr.addFlashAttribute("sucess", "Agendamento inserido com sucesso.");
 		return "redirect:/profissional/horario/horarios";
 	}
 	
-	// @GetMapping("horario/editar/{id}")
-	// public String preEditar(@PathVariable("id") Long id, Agendamento agendamento,ModelMap model) {
-	// 	Optional<Agendamento> a = service.buscarPorID(id);
-	// 	if (!a.isPresent()) {
-	// 		model.addAttribute("fail", "Não foi encontrado o agendamento");
-	// 	} else {
-	// 		Agendamento ag = a.get();
-	// 		model.addAttribute("horario", ag);
-	// 	}
+	@GetMapping("horario/editar/{id}")
+	public String preEditar(@PathVariable("id") Long id, Agendamento agendamento, ModelMap model) {
+		Optional<Agendamento> a = service.buscarPorID(id);
+		if (!a.isPresent()) {
+			System.out.println("======= NÃO ENCONTREI O HORÁRIO DE ID " + id);
+			model.addAttribute("fail", "Não foi encontrado o agendamento");
+		} else {
+			Agendamento ag = a.get();
+			System.out.println("======= Horário:" + ag.getData());
+			System.out.println("======= Agendado:" + ag.getAgendado());
+			System.out.println("======= ID:" + ag.getId());
+			System.out.println("======= CPF PRO:" + ag.getProfissional().getCPF());
+			model.addAttribute("agendamento", ag);
+		}
 		
-	// 	return "/profissional/horario/cadastro";
-	// }
+		return "/profissional/horario/cadastro";
+	}
 	
-	// @PostMapping("horario/editar")
-	// public String editar(@Valid Agendamento agendamento, BindingResult result, RedirectAttributes attr) {
+	@PostMapping("horario/editar")
+	public String editar(@Valid Agendamento agendamento, BindingResult result, RedirectAttributes attr, ModelMap model) {
+		System.out.println("EDITANDO =======================");
+		if (result.hasErrors()) {
+			return "/profissional/horario/cadastro";
+		}
 
-	// 	if (result.hasErrors()) {
-	// 		return "/profissional/horario/cadastro";
-	// 	}
-
-	// 	service.salvar(agendamento);
-	// 	attr.addFlashAttribute("sucess", "Horário editado com sucesso.");
-	// 	return "redirect:/profissional/horario/horarios";
-	// }
+		service.salvar(agendamento);
+		attr.addFlashAttribute("sucess", "Horário editado com sucesso.");
+		return "redirect:/profissional/horario/horarios";
+	}
 
 	@GetMapping("horario/excluir/{id}")
 	public String excluir1(@PathVariable("id") Long id, ModelMap model) {
