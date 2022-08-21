@@ -66,6 +66,30 @@ public class SAgendamentoApplication {
 			p2.setQualificacoes("qualificado");
 			p2.setArea_atuacao("area profissional");
 			profissionalDAO.save(p2);
+			
+			Profissional p3 = new Profissional();
+			p3.setCPF("1313131313");
+			p3.setNome("prof1");
+			p3.setData_nascimento("02/10/2001");
+			p3.setEmail("prof3@prof.com");
+			p3.setSenha("pro");
+			p3.setSexo('M');
+			p3.setEspecialidade("Ortopedia");
+			p3.setQualificacoes("code.pdf");
+			p3.setArea_atuacao("Medicina");
+			profissionalDAO.save(p3);
+			
+			Profissional p4 = new Profissional();
+			p4.setCPF("1313131314");
+			p4.setNome("Glauber");
+			p4.setData_nascimento("02/10/2001");
+			p4.setEmail("prof4@prof.com");
+			p4.setSenha("pro");
+			p4.setSexo('M');
+			p4.setEspecialidade("Direito Tributario");
+			p4.setQualificacoes("code.pdf");
+			p4.setArea_atuacao("Advocacia");
+			profissionalDAO.save(p4);
 
 			SimpleDateFormat dF = new SimpleDateFormat("dd-MM-yyyy"); // Date Formatter
 			SimpleDateFormat tF = new SimpleDateFormat("HH:mm:ss"); // Time Formatter
@@ -106,7 +130,6 @@ public class SAgendamentoApplication {
 			a5.setHora(tF.parse("12:00:00"));
 			agendamentoDAO.save(a5);
 		};
-		
 		
 	}
 }
