@@ -32,23 +32,25 @@
 				<table class="table table-striped table-hover table-sm">
 					<thead>
 						<tr>
-							<th>Profissional</th>
+							<th>Id</th>
 							<th>Cliente</th>
-							<th>Email</th>
-							<th>Ação</th>
+							<th>Data</th>
+							<th>Hora</th>
+                            <th>Ações</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="profissional : ${profissionais}">
-							<td th:text="${profissional.CPF}"></td>
-							<td th:text="${profissional.nome}"></td>
-							<td th:text="${profissional.email}"></td>
+						<tr th:each="agendamento : ${agendamentos}">
+							<td th:text="${agendamento.id}"></td>
+							<td th:text="${agendamento.cliente.nome}"></td>
+							<td th:text="${agendamento.data}"></td>
+                            <td th:text="${agendamento.hora}"></td>
 							<td colspan="2">
 								<a class="btn btn-info btn-sm"
-									th:href="@{/admin/profissional/editar/{cpf}(cpf=${profissional.CPF}) }" role="button"> 
+									th:href="@{/profissional/horario/editar/{id}(id=${agendamento.id}) }" role="button"> 
 									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 								</a>
-								<button th:id="${#strings.concat('btn_admin/profissional/excluir/',profissional.CPF)}" 
+								<button th:id="${#strings.concat('btn_profissional/horario/excluir/',agendamento.id)}" 
 									type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
 								</button>

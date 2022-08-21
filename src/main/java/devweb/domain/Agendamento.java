@@ -58,6 +58,10 @@ public class Agendamento {
 	// 	this(c, p, "ativo", data, hora);
 	// }
 
+	public Long getId() {
+		return id;
+	}
+
 	public Cliente getCliente() {
 		return cliente;
 	}
