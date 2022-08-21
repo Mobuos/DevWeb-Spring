@@ -58,7 +58,7 @@ public class ProfissionalController {
 	}
 
 	@GetMapping("horario/cadastrar")
-	public String cadastrar(Profissional profissional) {
+	public String cadastrar(Agendamento agendamento) {
 		return "profissional/horario/cadastro";
 	}
 	

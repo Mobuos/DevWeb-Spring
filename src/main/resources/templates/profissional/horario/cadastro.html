@@ -24,8 +24,8 @@
 			<div th:replace="fragments/alert"></div>
 
 			<form
-				th:action="${cliente == null} ? @{/admin/cliente/salvar} : @{/admin/cliente/editar}"
-				th:object="${cliente}" method="POST">
+				th:action="${agendamento == null} ? @{/profissional/horario/salvar} : @{/profissional/horario/editar}"
+				th:object="${agendamento}" method="POST">
 				
 				<div class="form-row">
 					<div class="form-group col-md-6">
