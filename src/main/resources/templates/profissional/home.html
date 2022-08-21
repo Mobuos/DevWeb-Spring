@@ -14,7 +14,7 @@
 						<span>Painel do Profissional</span>
 					</li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/profissional/horario/listar}" role="button"> 
+				<a class="btn btn-primary btn-md" th:href="@{/profissional/horario/horarios}" role="button"> 
 					<span>Horários Disponíveis</span>
 				</a>
 			</div>
@@ -57,7 +57,7 @@
 			</div>
 		</div>
 
-        <div th:replace="fragments/modal :: modal"></div>
+        <div th:replace="fragments/modalCancela :: modal"></div>
 	</section>
 </body>
 </html>

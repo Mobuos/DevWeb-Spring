@@ -35,7 +35,7 @@ public class ProfissionalController {
 
 	@GetMapping("/")
 	public String profissionalHome(ModelMap model) {
-		// TODO: Usar CPF do usuário
+		// TODO: Usar CPF do usuário profissional
 		model.addAttribute("agendamentos",service.buscarPorProfissional("12345678910"));
 		return "profissional/home";
 	}
@@ -46,17 +46,22 @@ public class ProfissionalController {
 		if (!a.isPresent()) {
 			model.addAttribute("fail", "Não foi encontrado o agendamento");
 		} else {
-			service.excluir(a.get());
+			Agendamento agendamento = a.get();
+			agendamento.setAgendado(false);
+			service.salvar(agendamento);
 			model.addAttribute("sucess", "Agendamento cancelado com sucesso.");
 		}
 		return profissionalHome(model);
 	}
 	
-	// @GetMapping("profissional/listar")
-	// public String listar1(ModelMap model) {
-	// 	model.addAttribute("profissionais", servicep.buscarTodos());
-	// 	return "admin/profissional/lista";
-	// }
+	// Listar e cadastrar estão aqui
+	@GetMapping("horario/horarios")
+	public String horarios(ModelMap model) {
+		// TODO: Usar CPF do usuário profissional
+		model.addAttribute("horarios", service.buscarDisponivelPorProfissional("12345678910"));
+		return "profissional/horario/horarios";
+	}
+
 	// @GetMapping("/profissional/cadastrar")
 	// public String cadastrar(Profissional profissional) {
 	// 	return "admin/profissional/cadastro";

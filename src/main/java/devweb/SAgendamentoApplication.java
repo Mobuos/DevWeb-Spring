@@ -94,14 +94,14 @@ public class SAgendamentoApplication {
 			// Horários Disponíveis
 			Agendamento a4 = new Agendamento();
 			a4.setAgendado(false);
-			a4.setProfissional(p2);
+			a4.setProfissional(p1);
 			a4.setData(dF.parse("16-09-2022"));
 			a4.setHora(tF.parse("11:00:00"));
 			agendamentoDAO.save(a4);
 
 			Agendamento a5 = new Agendamento();
 			a5.setAgendado(false);
-			a5.setProfissional(p2);
+			a5.setProfissional(p1);
 			a5.setData(dF.parse("18-09-2022"));
 			a5.setHora(tF.parse("12:00:00"));
 			agendamentoDAO.save(a5);
