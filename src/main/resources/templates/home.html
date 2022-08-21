@@ -6,8 +6,53 @@
 <body>
 	<section class="layout-content" layout:fragment="corpo">
 
-		<div class="container" style="text-align: center;">
-			<h1>Sistema de Agendamento</h1>
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<i class="oi oi-caret-right"></i>
+						<span>Profissionais Disponiveis</span>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container" id="listagem">
+
+			<div th:replace="fragments/alert"></div>
+
+			<div class="table-responsive">
+				<table class="table table-striped table-hover table-sm">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Área</th>
+							<th>Especialidade</th>
+							<th>Ação</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="profissional : ${profissionais}">
+							<td th:text="${profissional.nome}"></td>
+							<td th:text="${profissional.area_atuacao}"></td>
+							<td th:text="${profissional.especialidade}"></td>
+							<td colspan="2">
+								<!--
+								<a class="btn btn-info btn-sm"
+									th:href="@{/admin/cliente/editar/{cpf}(cpf=${profissional.CPF}) }" role="button"> 
+									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
+								</a>
+								
+								<button th:id="${#strings.concat('btn_admin/cliente/excluir/',cliente.CPF)}" 
+									type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
+									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
+								</button>
+								-->
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 
 	</section>
