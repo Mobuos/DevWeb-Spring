@@ -26,6 +26,7 @@ public class SAgendamentoApplication {
 		return (args) -> {
 
 			// Rode na primeira execução?
+			// test
 			Cliente c1 = new Cliente();
 			c1.setCPF("43113484871");
 			c1.setNome("João Dini");
