@@ -72,5 +72,37 @@
 			})
 		});
 	</script>
+	<script type="text/javascript">
+        // CRIANDO FILTRO POR AREA E ESPECIALIDADE
+        var select = document.querySelector("#selecione_area");
+        select.addEventListener("change", (e) => {
+        	var selected = select.value.toLowerCase();
+        	
+        	var table = document.getElementById("tbody");
+        	var tableRows = table.rows.length;
+        	var trElements = table.getElementsByTagName("tr");
+        	
+        	for (var i = 0; i < tableRows; i++)
+        	{
+        		var tdElements = trElements[i].getElementsByTagName("td");
+        		var tdText = tdElements[1].innerText || tdElements[1].textContent;
+        		tdText = tdText.toLowerCase().replace(/\W/g, '');
+        		
+        		if (selected === "todos")
+        		{
+        			trElements[i].style.display = "";
+        		}
+        		else if (tdText === selected)
+        		{
+        			trElements[i].style.display = "";
+        		}
+        		else
+        		{
+        			trElements[i].style.display = "none";
+        		}
+        	}
+        	
+        });
+      </script>
 </body>
 </html>
