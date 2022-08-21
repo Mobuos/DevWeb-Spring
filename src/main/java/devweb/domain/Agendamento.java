@@ -30,7 +30,6 @@ public class Agendamento {
 	private Boolean agendado = true;
 
 	@Column(nullable = false, unique = false, length = 40)
-	@NotBlank(message = "{NotBlank.agendamento.data}"")
 	@Temporal(TemporalType.DATE)
 	private Date data; /*pesquisar tipo adequado*/
 

@@ -91,6 +91,7 @@ public class AdminController {
 		model.addAttribute("profissionais", servicep.buscarTodos());
 		return "admin/profissional/lista";
 	}
+	
 	@GetMapping("/profissional/cadastrar")
 	public String cadastrar(Profissional profissional) {
 		return "admin/profissional/cadastro";
