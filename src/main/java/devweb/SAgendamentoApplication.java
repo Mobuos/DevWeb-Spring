@@ -7,11 +7,7 @@ import org.springframework.context.annotation.Bean;
 
 import devweb.dao.IClienteDAO;
 import devweb.dao.IProfissionalDAO;
-// import devweb.domain.Admin;
-// import devweb.domain.Profissional;
-// import devweb.domain.Agendamento;
 import devweb.domain.Cliente;
-// import devweb.domain.Usuario;
 import devweb.domain.Profissional;
 
 @SpringBootApplication
@@ -25,7 +21,6 @@ public class SAgendamentoApplication {
 	public CommandLineRunner demo(IClienteDAO clienteDAO, IProfissionalDAO profissionalDAO) {
 		return (args) -> {
 
-			// Rode na primeira execução?
 			Cliente c1 = new Cliente();
 			c1.setCPF("43113484871");
 			c1.setNome("João Dini");
