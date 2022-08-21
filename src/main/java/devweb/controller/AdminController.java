@@ -21,6 +21,11 @@ public class AdminController {
 	
 	@Autowired
 	private IClienteService service;
+
+	@GetMapping("/")
+	public String adminHome() {
+		return "admin/home";
+	}
 	
 	@GetMapping("/cliente/cadastrar")
 	public String cadastrar(Cliente cliente) {
