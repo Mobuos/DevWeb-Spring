@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import devweb.domain.Cliente;
 import devweb.service.spec.IClienteService;
+import devweb.service.spec.IProfissionalService;
 
 @Controller
 @RequestMapping("/admin")
@@ -21,6 +22,8 @@ public class AdminController {
 	
 	@Autowired
 	private IClienteService service;
+	@Autowired
+	private IProfissionalService servicep;
 	
 	@GetMapping("/cliente/cadastrar")
 	public String cadastrar(Cliente cliente) {
@@ -29,6 +32,7 @@ public class AdminController {
 	
 	@GetMapping("cliente/listar")
 	public String listar(ModelMap model) {
+		System.out.println("LOG== Listar dos clientes");
 		model.addAttribute("clientes",service.buscarTodos());
 		return "admin/cliente/lista";
 	}
@@ -94,7 +98,9 @@ public class AdminController {
 	}
 	@GetMapping("profissional/listar")
 	public String listar1(ModelMap model) {
-		model.addAttribute("profissionais",service.buscarTodos());
+		System.out.println("LOG== Listar dos profissionais");
+		model.addAttribute("profissionais", servicep.buscarTodos());
+		System.out.println("LOG== Listar dos profissionais 2");
 		return "admin/profissional/lista";
 	}
 	

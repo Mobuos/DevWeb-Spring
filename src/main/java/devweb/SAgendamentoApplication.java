@@ -22,7 +22,7 @@ public class SAgendamentoApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(IClienteDAO clienteDAO) {
+	public CommandLineRunner demo(IClienteDAO clienteDAO, IProfissionalDAO profissionalDAO) {
 		return (args) -> {
 
 			// Rode na primeira execução?
@@ -36,8 +36,17 @@ public class SAgendamentoApplication {
 			clienteDAO.save(c1);
 
 			
-			//Profissional p1 = new Profissional("12345678910","pro1@profissional.com", "pro", "profissional 1", 'm', "11987654321", "20/08/20222","areap1","especialidadep1","qualip1");
-			//profissionalDAO.save(p1);
+			Profissional p1 = new Profissional();
+			p1.setCPF("12345678910");
+			p1.setNome("prof1");
+			p1.setData_nascimento("02/10/2001");
+			p1.setEmail("prof1@prof.com");
+			p1.setSenha("6422");
+			p1.setSexo('M');
+			p1.setEspecialidade("especialista");
+			p1.setQualificacoes("qualificado");
+			p1.setArea_atuacao("area profissional");
+			profissionalDAO.save(p1);
 						
 			// Editora e1 = new Editora();
 			// e1.setCNPJ("55.789.390/0008-99");
