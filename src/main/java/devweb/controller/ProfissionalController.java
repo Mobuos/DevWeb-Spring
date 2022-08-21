@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import devweb.domain.Agendamento;
 import devweb.service.spec.IAgendamentoService;
 import devweb.service.spec.IProfissionalService;
@@ -64,10 +65,14 @@ public class ProfissionalController {
 	
 	@PostMapping("horario/salvar")
 	public String salvar(@Valid Agendamento agendamento, BindingResult result, RedirectAttributes attr) {
-		System.out.println("SALVANDO " + agendamento);
+
 		if (result.hasErrors()) {
+			System.out.println("Erros no salvamento");
+			System.out.println(result.getAllErrors());
 			return "profissional/horario/cadastro";
 		}
+
+		System.out.println("SALVANDO " + agendamento);
 		
 		// TODO: Usar CPF do usuário profissional
 		agendamento.setProfissional(pService.buscarPorCPF("12345678910"));
@@ -96,19 +101,29 @@ public class ProfissionalController {
 	}
 	
 	@PostMapping("horario/editar")
-	public String editar(@Valid Agendamento agendamento, BindingResult result, RedirectAttributes attr, ModelMap model) {
+	public String editar(@Valid Agendamento agendamento, BindingResult result, RedirectAttributes attr) {
 		System.out.println("EDITANDO =======================");
+		System.out.println("Agendado: " + agendamento.getAgendado());
+		System.out.println("Id: " + agendamento.getId());
+		System.out.println("Cli CPF: " + agendamento.getCliente());
+		System.out.println("Pro CPF: " + agendamento.getProfissional());
+		System.out.println("Data: " + agendamento.getData());
+		System.out.println("Hora: " + agendamento.getHora());
+
 		if (result.hasErrors()) {
+			System.out.println("Erros");
+			System.out.println(result.getAllErrors());
 			return "/profissional/horario/cadastro";
 		}
 
+		System.out.println("Atributos do agendamento: " + agendamento.getId() + agendamento.getData() + agendamento.getHora());
 		service.salvar(agendamento);
 		attr.addFlashAttribute("sucess", "Horário editado com sucesso.");
 		return "redirect:/profissional/horario/horarios";
 	}
 
 	@GetMapping("horario/excluir/{id}")
-	public String excluir1(@PathVariable("id") Long id, ModelMap model) {
+	public String excluir(@PathVariable("id") Long id, ModelMap model) {
 		Optional<Agendamento> a = service.buscarPorID(id);
 		if (!a.isPresent()) {
 			model.addAttribute("fail", "Não foi encontrado o horário");

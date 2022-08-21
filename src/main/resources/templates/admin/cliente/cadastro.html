@@ -96,8 +96,6 @@
 						<select id="sexo" class="form-control" th:field="*{sexo}"
 							th:classappend="${#fields.hasErrors('sexo')} ? is-invalid">
 							<option value="">Selecione</option>
-							<!-- <option th:each="sexo : ${sexos}" th:value="${sexo.id}"
-								th:text="${sexo.nome}"></option> -->
 							<option th:value="'M'" th:text="M"></option>
 							<option th:value="'F'" th:text="F"></option>
 						</select>
