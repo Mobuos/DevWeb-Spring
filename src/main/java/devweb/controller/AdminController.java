@@ -75,4 +75,10 @@ public class AdminController {
 		// }
 		return listar(model);
 	}
+	@GetMapping("profissional/listar")
+	public String listar1(ModelMap model) {
+		model.addAttribute("profissionais",service.buscarTodos());
+		return "admin/profissional/lista";
+	}
+	
 }
