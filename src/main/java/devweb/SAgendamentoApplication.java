@@ -1,17 +1,17 @@
 package devweb;
 
+import java.text.SimpleDateFormat;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import devweb.dao.IAgendamentoDAO;
 import devweb.dao.IClienteDAO;
 import devweb.dao.IProfissionalDAO;
-// import devweb.domain.Admin;
-// import devweb.domain.Profissional;
-// import devweb.domain.Agendamento;
+import devweb.domain.Agendamento;
 import devweb.domain.Cliente;
-// import devweb.domain.Usuario;
 import devweb.domain.Profissional;
 
 @SpringBootApplication
@@ -22,62 +22,89 @@ public class SAgendamentoApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(IClienteDAO clienteDAO) {
+	public CommandLineRunner demo(IClienteDAO clienteDAO, IProfissionalDAO profissionalDAO, IAgendamentoDAO agendamentoDAO) {
 		return (args) -> {
 
-			// Rode na primeira execução?
-			// test
 			Cliente c1 = new Cliente();
-			c1.setCPF("43113484871");
-			c1.setNome("João Dini");
+			c1.setCPF("13443189861");
+			c1.setNome("Miranda Miranda");
 			c1.setData_nascimento("02/10/2001");
 			c1.setEmail("copperbrjdmdini@gmail.com");
-			c1.setSenha("6422");
+			c1.setSenha("9544");
 			c1.setSexo('M');
 			clienteDAO.save(c1);
 
-			
-			//Profissional p1 = new Profissional("12345678910","pro1@profissional.com", "pro", "profissional 1", 'm', "11987654321", "20/08/20222","areap1","especialidadep1","qualip1");
-			//profissionalDAO.save(p1);
-						
-			// Editora e1 = new Editora();
-			// e1.setCNPJ("55.789.390/0008-99");
-			// e1.setNome("Companhia das Letras");
-			// editoraDAO.save(e1);
-			
-			// Editora e2 = new Editora();
-			// e2.setCNPJ("71.150.470/0001-40");
-			// e2.setNome("Record");
-			// editoraDAO.save(e2);
-			
-			// Editora e3 = new Editora();
-			// e3.setCNPJ("32.106.536/0001-82");
-			// e3.setNome("Objetiva");
-			// editoraDAO.save(e3);
-			
-			// Livro l1 = new Livro();
-			// l1.setTitulo("Ensaio sobre a Cegueira");
-			// l1.setAutor("José Saramago");
-			// l1.setAno(1995);
-			// l1.setPreco(BigDecimal.valueOf(54.9));
-			// l1.setEditora(e1);
-			// livroDAO.save(l1);
-			
-			// Livro l2 = new Livro();
-			// l2.setTitulo("Cem anos de Solidão");
-			// l2.setAutor("Gabriel Garcia Márquez");
-			// l2.setAno(1977);
-			// l2.setPreco(BigDecimal.valueOf(59.9));
-			// l2.setEditora(e2);
-			// livroDAO.save(l2);
-			
-			// Livro l3 = new Livro();
-			// l3.setTitulo("Diálogos Impossíveis");
-			// l3.setAutor("Luis Fernando Verissimo");
-			// l3.setAno(2012);
-			// l3.setPreco(BigDecimal.valueOf(22.9));
-			// l3.setEditora(e3);
-			// livroDAO.save(l3);
+			Cliente c2 = new Cliente();
+			c2.setCPF("75823751853");
+			c2.setNome("Paulo Sebastião");
+			c2.setData_nascimento("10/10/1998");
+			c2.setEmail("p.sebastiao@gmail.com");
+			c2.setSenha("928ab");
+			c2.setSexo('M');
+			clienteDAO.save(c2);
+
+			Profissional p1 = new Profissional();
+			p1.setCPF("12345678910");
+			p1.setNome("prof1");
+			p1.setData_nascimento("02/10/2001");
+			p1.setEmail("prof1@prof.com");
+			p1.setSenha("7653");
+			p1.setSexo('M');
+			p1.setEspecialidade("especialista");
+			p1.setQualificacoes("qualificado");
+			p1.setArea_atuacao("area profissional");
+			profissionalDAO.save(p1);
+
+			Profissional p2 = new Profissional();
+			p2.setCPF("53345677778");
+			p2.setNome("prof2");
+			p2.setData_nascimento("12/12/1986");
+			p2.setEmail("prof2@prof.com");
+			p2.setSenha("5464");
+			p2.setSexo('F');
+			p2.setEspecialidade("especialista");
+			p2.setQualificacoes("qualificado");
+			p2.setArea_atuacao("area profissional");
+			profissionalDAO.save(p2);
+
+			SimpleDateFormat dF = new SimpleDateFormat("dd-MM-yyyy"); // Date Formatter
+			SimpleDateFormat tF = new SimpleDateFormat("HH:mm:ss"); // Time Formatter
+
+			Agendamento a1 = new Agendamento();
+			a1.setCliente(c1);
+			a1.setProfissional(p1);
+			a1.setData(dF.parse("30-08-2022"));
+			a1.setHora(tF.parse("13:30:00"));
+			agendamentoDAO.save(a1);
+
+			Agendamento a2 = new Agendamento();
+			a2.setCliente(c2);
+			a2.setProfissional(p1);
+			a2.setData(dF.parse("12-09-2022"));
+			a2.setHora(tF.parse("10:00:00"));
+			agendamentoDAO.save(a2);
+
+			Agendamento a3 = new Agendamento();
+			a3.setCliente(c1);
+			a3.setProfissional(p2);
+			a3.setData(dF.parse("15-09-2022"));
+			a3.setHora(tF.parse("11:00:00"));
+			agendamentoDAO.save(a3);
+
+			// Horários Disponíveis
+			Agendamento a4 = new Agendamento();
+			a4.setAgendado(false);
+			a4.setProfissional(p1);
+			a4.setData(dF.parse("16-09-2022"));
+			a4.setHora(tF.parse("11:00:00"));
+			agendamentoDAO.save(a4);
+
+			Agendamento a5 = new Agendamento();
+			a5.setAgendado(false);
+			a5.setProfissional(p1);
+			a5.setData(dF.parse("18-09-2022"));
+			a5.setHora(tF.parse("12:00:00"));
+			agendamentoDAO.save(a5);
 		};
 		
 		

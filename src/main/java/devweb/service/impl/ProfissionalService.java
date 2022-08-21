@@ -33,23 +33,5 @@ public class ProfissionalService implements IProfissionalService{
     @Transactional(readOnly = true)
     public List<Profissional> buscarTodos() {
         return dao.findAll();
-    }
-    /*
-	@Override
-	public Profissional buscarPorCPF(String cpf) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public void salvar(Profissional profissional) {
-		// TODO Auto-generated method stub
-		
-	}
-	*/
-    // @Transactional(readOnly = true)
-    // public boolean clienteTemAgendamentos(String cpf) {
-    //     return !dao.findByCPF(cpf).getAgendamentos().isEmpty()
-    // }
-    
+    } 
 }
