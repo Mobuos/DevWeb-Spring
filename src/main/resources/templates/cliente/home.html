@@ -14,9 +14,6 @@
 						<span>Painel do Cliente</span>
 					</li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/cliente/horario/horarios}" role="button"> 
-					<span>Horários Disponíveis</span>
-				</a>
 			</div>
 		</nav>
 
@@ -34,6 +31,7 @@
 						<tr>
 							<th>Id</th>
 							<th>Profissional</th>
+							<th>Especialidade</th>
 							<th>Data</th>
 							<th>Hora</th>
                             <th>Ações</th>
@@ -43,6 +41,7 @@
 						<tr th:each="agendamento : ${agendamentos}">
 							<td th:text="${agendamento.id}"></td>
 							<td th:text="${agendamento.profissional.nome}"></td>
+							<td th:text="${agendamento.profissional.especialidade}"></td>
 							<td th:text="${agendamento.data}"></td>
                             <td th:text="${agendamento.hora}"></td>
 							<td colspan="2">
