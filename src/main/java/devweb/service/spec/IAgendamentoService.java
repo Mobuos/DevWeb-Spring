@@ -10,6 +10,8 @@ public interface IAgendamentoService {
 
     List<Agendamento> buscarPorProfissional(String cpf);
 
+    List<Agendamento> buscarDisponivelPorProfissional(String cpf);
+
     void salvar(Agendamento agendamento);
 
     void excluir(Agendamento agendamento);

@@ -46,13 +46,9 @@
 							<td th:text="${agendamento.data}"></td>
                             <td th:text="${agendamento.hora}"></td>
 							<td colspan="2">
-								<a class="btn btn-info btn-sm"
-									th:href="@{/profissional/horario/editar/{id}(id=${agendamento.id}) }" role="button"> 
-									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
-								</a>
-								<button th:id="${#strings.concat('btn_profissional/horario/excluir/',agendamento.id)}" 
+								<button th:id="${#strings.concat('btn_profissional/horario/cancelar/',agendamento.id)}" 
 									type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
-									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
+									<span>Cancelar</span>
 								</button>
 							</td>
 						</tr>

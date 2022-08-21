@@ -1,5 +1,7 @@
 package devweb.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import static org.springframework.data.util.Optionals.ifPresentOrElse;
 
 import devweb.domain.Cliente;
 import devweb.domain.Profissional;
@@ -35,6 +38,18 @@ public class ProfissionalController {
 		// TODO: Usar CPF do usuário
 		model.addAttribute("agendamentos",service.buscarPorProfissional("12345678910"));
 		return "profissional/home";
+	}
+
+	@GetMapping("horario/cancelar/{ID}")
+	public String cancelar(@PathVariable("ID") Long ID, ModelMap model) {
+		Optional<Agendamento> a = service.buscarPorID(ID);
+		if (!a.isPresent()) {
+			model.addAttribute("fail", "Não foi encontrado o agendamento");
+		} else {
+			service.excluir(a.get());
+			model.addAttribute("sucess", "Agendamento cancelado com sucesso.");
+		}
+		return profissionalHome(model);
 	}
 	
 	// @GetMapping("profissional/listar")
@@ -75,16 +90,5 @@ public class ProfissionalController {
 	// 	servicep.salvar(profissional);
 	// 	attr.addFlashAttribute("sucess", "Profissional editado com sucesso.");
 	// 	return "redirect:/admin/profissional/listar";
-	// }
-	
-	// @GetMapping("profissional/excluir/{CPF}")
-	// public String excluir1(@PathVariable("CPF") String CPF, ModelMap model) {
-	// 	// if (service.clienteTemAgendamentos(CPF)) {
-	// 	// 	model.addAttribute("fail", "Cliente não excluída. Possui livro(s) vinculado(s).");
-	// 	// } else {
-	// 		servicep.excluir(CPF);
-	// 		model.addAttribute("sucess", "Profissional excluído com sucesso.");
-	// 	// }
-	// 	return listar1(model);
 	// }
 }

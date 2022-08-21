@@ -26,7 +26,7 @@ public class Agendamento {
 	private Profissional profissional;
 
 	@Column(nullable = true, unique = false, length = 40)
-	private String status;
+	private Boolean agendado = true;
 
 	// temporalValues.setUtilDate(
 	// 	new SimpleDateFormat("yyyy-MM-dd").parse("2017-11-15"));
@@ -74,11 +74,11 @@ public class Agendamento {
 	public void setProfissional(Profissional profissional) {
 		this.profissional = profissional;
 	}
-	public String getStatus() {
-		return status;
+	public Boolean getAgendado() {
+		return agendado;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setAgendado(Boolean agendado){
+		this.agendado = agendado;
 	}
 	public java.util.Date getData() {
 		return data;

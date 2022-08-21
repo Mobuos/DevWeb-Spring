@@ -1,5 +1,6 @@
 package devweb.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,13 +31,41 @@ public class AgendamentoService implements IAgendamentoService{
     @Transactional(readOnly = true)
     public List<Agendamento> buscarPorCliente(String cpf) {
         Cliente c = cDao.findByCPF(cpf);
-        return dao.findAllByCliente(c);
+        List<Agendamento> todos = dao.findAllByCliente(c);
+        List<Agendamento> agendados = new ArrayList<>();
+        for (Agendamento agendamento : todos){
+            if (agendamento.getAgendado()){
+                agendados.add(agendamento);
+            }
+        }
+
+        return agendados;
     }
 
     @Transactional(readOnly = true)
     public List<Agendamento> buscarPorProfissional(String cpf) {
         Profissional p = pDao.findByCPF(cpf);
-        return dao.findAllByProfissional(p);
+        List<Agendamento> todos = dao.findAllByProfissional(p);
+        List<Agendamento> agendados = new ArrayList<>();
+        for (Agendamento agendamento : todos){
+            if (agendamento.getAgendado()){
+                agendados.add(agendamento);
+            }
+        }
+
+        return agendados;
+    }
+
+    public List<Agendamento> buscarDisponivelPorProfissional(String cpf){
+        Profissional p = pDao.findByCPF(cpf);
+        List<Agendamento> todos = dao.findAllByProfissional(p);
+        List<Agendamento> disponiveis = new ArrayList<>();
+        for (Agendamento agendamento : todos){
+            if (!agendamento.getAgendado()){
+                disponiveis.add(agendamento);
+            }
+        }
+        return disponiveis;
     }
 
     public void salvar(Agendamento agendamento) {
@@ -50,5 +79,4 @@ public class AgendamentoService implements IAgendamentoService{
     public Optional<Agendamento> buscarPorID(Long id) {
         return dao.findById(id);
     }
-
 }
