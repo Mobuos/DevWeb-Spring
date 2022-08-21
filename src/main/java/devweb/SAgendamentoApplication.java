@@ -25,6 +25,7 @@ public class SAgendamentoApplication {
 	public CommandLineRunner demo(IClienteDAO clienteDAO) {
 		return (args) -> {
 
+			// Rode na primeira execução?
 			Cliente c1 = new Cliente();
 			c1.setCPF("43113484871");
 			c1.setNome("João Dini");
@@ -33,6 +34,7 @@ public class SAgendamentoApplication {
 			c1.setSenha("6422");
 			c1.setSexo('M');
 			clienteDAO.save(c1);
+<<<<<<< HEAD
 			
 			//Profissional p1 = new Profissional("12345678910","pro1@profissional.com", "pro", "profissional 1", 'm', "11987654321", "20/08/20222","areap1","especialidadep1","qualip1");
 			//profissionalDAO.save(p1);
@@ -128,6 +130,8 @@ public class SAgendamentoApplication {
 			// l3.setPreco(BigDecimal.valueOf(22.9));
 			// l3.setEditora(e3);
 			// livroDAO.save(l3);
+=======
+>>>>>>> a875c05ecdfa162444238ed9afd6d201b74011c2
 		};
 		
 		

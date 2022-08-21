@@ -41,22 +41,22 @@ public class Agendamento {
 	@Temporal(TemporalType.TIME)
 	private Date hora; /*pesquisar tipo adequado*/
 	
-	public Agendamento (Cliente cliente, 
-						Profissional profissional, 
-						String status, 
-						Date data, 
-						Date hora
-						){
-		this.cliente = cliente;
-		this.profissional = profissional;
-		this.status = status;
-		this.data = data;
-		this.hora = hora;
-	}
+	// public Agendamento (Cliente cliente, 
+	// 					Profissional profissional, 
+	// 					String status, 
+	// 					Date data, 
+	// 					Date hora
+	// 					){
+	// 	this.cliente = cliente;
+	// 	this.profissional = profissional;
+	// 	this.status = status;
+	// 	this.data = data;
+	// 	this.hora = hora;
+	// }
 
-	public Agendamento (Cliente c, Profissional p, Date data, Date hora){
-		this(c, p, "ativo", data, hora);
-	}
+	// public Agendamento (Cliente c, Profissional p, Date data, Date hora){
+	// 	this(c, p, "ativo", data, hora);
+	// }
 
 	public Cliente getCliente() {
 		return cliente;
