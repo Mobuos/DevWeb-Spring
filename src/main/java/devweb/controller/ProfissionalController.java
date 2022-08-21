@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import devweb.domain.Profissional;
 import devweb.domain.Agendamento;
-import devweb.service.spec.IProfissionalService;
 import devweb.service.spec.IAgendamentoService;
 
 @Controller
@@ -25,8 +23,6 @@ public class ProfissionalController {
 	
 	@Autowired
 	private IAgendamentoService service;
-	@Autowired
-	private IProfissionalService servicep;
 
 	@GetMapping("/")
 	public String profissionalHome(ModelMap model) {
@@ -74,30 +70,30 @@ public class ProfissionalController {
 		return "redirect:/profissional/horario/horarios";
 	}
 	
-	@GetMapping("horario/editar/{id}")
-	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
-		Optional<Agendamento> a = service.buscarPorID(id);
-		if (!a.isPresent()) {
-			model.addAttribute("fail", "Não foi encontrado o agendamento");
-		} else {
-			Agendamento agendamento = a.get();
-			model.addAttribute("horario", agendamento);
-		}
+	// @GetMapping("horario/editar/{id}")
+	// public String preEditar(@PathVariable("id") Long id, Agendamento agendamento,ModelMap model) {
+	// 	Optional<Agendamento> a = service.buscarPorID(id);
+	// 	if (!a.isPresent()) {
+	// 		model.addAttribute("fail", "Não foi encontrado o agendamento");
+	// 	} else {
+	// 		Agendamento ag = a.get();
+	// 		model.addAttribute("horario", ag);
+	// 	}
 		
-		return "/profissional/horario/cadastro";
-	}
+	// 	return "/profissional/horario/cadastro";
+	// }
 	
-	@PostMapping("horario/editar")
-	public String editar(@Valid Profissional profissional, BindingResult result, RedirectAttributes attr) {
+	// @PostMapping("horario/editar")
+	// public String editar(@Valid Agendamento agendamento, BindingResult result, RedirectAttributes attr) {
 
-		if (result.hasErrors()) {
-			return "/profissional/horario/cadastro";
-		}
+	// 	if (result.hasErrors()) {
+	// 		return "/profissional/horario/cadastro";
+	// 	}
 
-		servicep.salvar(profissional);
-		attr.addFlashAttribute("sucess", "Profissional editado com sucesso.");
-		return "redirect:/profissional/horario/horarios";
-	}
+	// 	service.salvar(agendamento);
+	// 	attr.addFlashAttribute("sucess", "Horário editado com sucesso.");
+	// 	return "redirect:/profissional/horario/horarios";
+	// }
 
 	@GetMapping("horario/excluir/{id}")
 	public String excluir1(@PathVariable("id") Long id, ModelMap model) {

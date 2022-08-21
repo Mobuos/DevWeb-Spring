@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{admin/layout}">
+<html layout:decorate="~{profissional/layout}">
 <head>
 <meta charset="UTF-8" />
 </head>
@@ -10,11 +10,11 @@
 			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active"><i class="oi oi-caret-right"></i>
-						<span>Cadastrar Clientes</span></li>
+						<span>Cadastrar Horários Disponíveis</span></li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/admin/cliente/listar}"
+				<a class="btn btn-primary btn-md" th:href="@{/profissional/horario/horarios}"
 					role="button"> <span class="oi oi-spreadsheet" title="Listar"
-					aria-hidden="true"></span> <span>Listar Clientes</span>
+					aria-hidden="true"></span> <span>Listar Horários</span>
 				</a>
 			</div>
 		</nav>
@@ -24,31 +24,33 @@
 			<div th:replace="fragments/alert"></div>
 
 			<form
-				th:action="${agendamento == null} ? @{/profissional/horario/salvar} : @{/profissional/horario/editar}"
+				th:action="@{/profissional/horario/salvar}"
 				th:object="${agendamento}" method="POST">
 				
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label for="nome">Nome</label> 
-						<input type="text" class="form-control" id="nome" placeholder="Nome"
-							autofocus="autofocus" th:field="*{nome}"
-							th:classappend="${#fields.hasErrors('nome')} ? is-invalid" />
+						<label for="data">Data</label> 
+						<input type="date" class="form-control" id="data"
+							autofocus="autofocus" th:field="*{data}"
+							th:classappend="${#fields.hasErrors('data')} ? is-invalid" />
 
 						<div class="invalid-feedback">
-							<span th:errors="*{nome}"></span>
+							<span th:errors="*{data}"></span>
 						</div>
 					</div>
 
 					<div class="form-group col-md-6">
-						<label for="nome">Email</label> 
-						<input type="text" class="form-control" id="email" placeholder="jose@agendamento.com"
-							autofocus="autofocus" th:field="*{email}"
-							th:classappend="${#fields.hasErrors('email')} ? is-invalid" />		                               
+						<label for="hora">Horário</label> 
+						<input type="time" class="form-control" id="hora"
+							autofocus="autofocus" th:field="*{hora}"
+							th:classappend="${#fields.hasErrors('hora')} ? is-invalid" />		                               
 						<div class="invalid-feedback">
-							<span th:errors="*{email}"></span>
+							<span th:errors="*{hora}"></span>
 						</div>
 					</div>
 				<input type="hidden" id="id" th:field="*{id}" />
+				<input type="hidden" id="cliente" th:field="*{cliente}" />
+				<input type="hidden" id="profissional" th:field="*{profissional}" />
 				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 			</form>
 		</div>

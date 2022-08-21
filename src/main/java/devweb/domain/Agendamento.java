@@ -10,7 +10,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotBlank;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "Agendamento")
@@ -31,10 +32,12 @@ public class Agendamento {
 
 	@Column(nullable = false, unique = false, length = 40)
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date data; /*pesquisar tipo adequado*/
 
 	@Column(nullable = false, unique = false, length = 40)
 	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date hora; /*pesquisar tipo adequado*/
 
 	public Agendamento (){
