@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "Agendamento")
@@ -28,35 +29,18 @@ public class Agendamento {
 	@Column(nullable = true, unique = false, length = 40)
 	private Boolean agendado = true;
 
-	// temporalValues.setUtilDate(
-	// 	new SimpleDateFormat("yyyy-MM-dd").parse("2017-11-15"));
-	// temporalValues.setUtilTime(
-	// 	new SimpleDateFormat("HH:mm:ss").parse("15:30:14"));
-
 	@Column(nullable = false, unique = false, length = 40)
+	@NotBlank(message = "{NotBlank.agendamento.data}"")
 	@Temporal(TemporalType.DATE)
 	private Date data; /*pesquisar tipo adequado*/
 
 	@Column(nullable = false, unique = false, length = 40)
 	@Temporal(TemporalType.TIME)
 	private Date hora; /*pesquisar tipo adequado*/
-	
-	// public Agendamento (Cliente cliente, 
-	// 					Profissional profissional, 
-	// 					String status, 
-	// 					Date data, 
-	// 					Date hora
-	// 					){
-	// 	this.cliente = cliente;
-	// 	this.profissional = profissional;
-	// 	this.status = status;
-	// 	this.data = data;
-	// 	this.hora = hora;
-	// }
 
-	// public Agendamento (Cliente c, Profissional p, Date data, Date hora){
-	// 	this(c, p, "ativo", data, hora);
-	// }
+	public Agendamento (){
+		
+	}
 
 	public Long getId() {
 		return id;

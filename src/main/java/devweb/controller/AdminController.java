@@ -54,25 +54,6 @@ public class AdminController {
 		attr.addFlashAttribute("sucess", "Cliente inserida com sucesso.");
 		return "redirect:/admin/cliente/listar";
 	}
-	
-	// @GetMapping("cliente/editar/{CPF}")
-	// public String preEditar(@PathVariable("CPF") String CPF, ModelMap model) {
-	// 	model.addAttribute("cliente", service.buscarPorCPF(CPF));
-	// 	return "admin/cliente/cadastro";
-	// }
-	
-	// @PostMapping("cliente/editar")
-	// public String editar(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr) {
-		
-	// 	// Apenas rejeita se o problema não for com o CPF (CPF campo read-only) 
-	// 	if (result.getFieldErrorCount() > 1 || result.getFieldError("CPF") == null) {
-	// 		return "admin/cliente/cadastro";
-	// 	}
-
-	// 	service.salvar(cliente);
-	// 	attr.addFlashAttribute("sucess", "Cliente editado com sucesso.");
-	// 	return "redirect:/admin/clientes/listar";
-	// }
 
 	@GetMapping("/cliente/editar/{cpf}")
 	public String preEditar(@PathVariable("cpf") String cpf, ModelMap model) {
