@@ -52,12 +52,20 @@ public class ClienteController {
 		return clienteHome(model);
 	}
 
-	// Listar e cadastrar estão aqui
 	@GetMapping("agendar/{ID}")
 	public String agendar(@PathVariable("ID") Long id, Agendamento agendamento, ModelMap model) {
 		// TODO: Usar CPF do usuário profissional
 		model.addAttribute("horarios", service.buscarDisponivelPorProfissional(String.valueOf(id)));
 		return "cliente/agendar";
+	}
+
+	@GetMapping("agendar/horario/{ID}")
+	public String agendarHorario(@PathVariable("ID") Long id, Agendamento agendamento, ModelMap model) {
+		Agendamento ag = service.buscarPorID(id).get();
+		ag.setAgendado(true);
+		ag.setCliente(servicec.buscarPorCPF("75823751853"));
+		service.salvar(ag);
+		return "redirect:/cliente/";
 	}
 	
 }
