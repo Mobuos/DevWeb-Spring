@@ -32,7 +32,7 @@ public class SAgendamentoApplication {
 			c1.setCPF("13443189861");
 			c1.setNome("Miranda Miranda");
 			c1.setData_nascimento("02/10/2001");
-			c1.setEmail("copperbrjdmdini@gmail.com");
+			c1.setEmail("miranda@gmail.com");
 			c1.setSenha(encoder.encode("cliente"));
 			c1.setSexo('M');
 			clienteDAO.save(c1);
@@ -95,12 +95,24 @@ public class SAgendamentoApplication {
 			p4.setArea_atuacao("Advocacia");
 			profissionalDAO.save(p4);
 
-			// Admin adm = new Admin();
-			// adm.setCPF("adm");
-			// adm.setNome("Dev");
-			// adm.setEmail("adm@adm.com");
-			// adm.setSenha(encoder.encode("adm"));
-			// adminDAO.save(adm);
+			Profissional p5 = new Profissional();
+			p5.setCPF("90383718284");
+			p5.setNome("Olivier Florence");
+			p5.setData_nascimento("13/12/2000");
+			p5.setEmail("oli@prof.com");
+			p5.setSenha(encoder.encode("pro"));
+			p5.setSexo('M');
+			p5.setEspecialidade("Ilusões");
+			p5.setQualificacoes("n/a");
+			p5.setArea_atuacao("Caça Fantasmas");
+			profissionalDAO.save(p5);
+
+			Admin adm = new Admin();
+			adm.setCPF("adm");
+			adm.setNome("Dev");
+			adm.setEmail("adm@adm.com");
+			adm.setSenha(encoder.encode("adm"));
+			adminDAO.save(adm);
 
 			SimpleDateFormat dF = new SimpleDateFormat("dd-MM-yyyy"); // Date Formatter
 			SimpleDateFormat tF = new SimpleDateFormat("HH:mm:ss"); // Time Formatter

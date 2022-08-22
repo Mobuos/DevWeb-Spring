@@ -1,7 +1,5 @@
 package devweb.dao;
 
-import java.util.Optional;
-
 import org.springframework.data.repository.CrudRepository;
 
 import devweb.domain.Usuario;
