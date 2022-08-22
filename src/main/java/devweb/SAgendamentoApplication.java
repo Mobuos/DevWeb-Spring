@@ -45,35 +45,35 @@ public class SAgendamentoApplication {
 
 			Profissional p1 = new Profissional();
 			p1.setCPF("12345678910");
-			p1.setNome("prof1");
-			p1.setData_nascimento("02/10/2001");
-			p1.setEmail("prof1@prof.com");
-			p1.setSenha("7653");
+			p1.setNome("Alan Robertos");
+			p1.setData_nascimento("13/12/2000");
+			p1.setEmail("alan@prof.com");
+			p1.setSenha("112345");
 			p1.setSexo('M');
-			p1.setEspecialidade("especialista");
+			p1.setEspecialidade("Direito Digital");
 			p1.setQualificacoes("qualificado");
-			p1.setArea_atuacao("area profissional");
+			p1.setArea_atuacao("Advocacia");
 			profissionalDAO.save(p1);
 
 			Profissional p2 = new Profissional();
 			p2.setCPF("53345677778");
-			p2.setNome("prof2");
+			p2.setNome("Ana Paula");
 			p2.setData_nascimento("12/12/1986");
-			p2.setEmail("prof2@prof.com");
-			p2.setSenha("5464");
+			p2.setEmail("a.paula@prof.com");
+			p2.setSenha("54649");
 			p2.setSexo('F');
-			p2.setEspecialidade("especialista");
+			p2.setEspecialidade("Mecânica");
 			p2.setQualificacoes("qualificado");
-			p2.setArea_atuacao("area profissional");
+			p2.setArea_atuacao("Engenharia");
 			profissionalDAO.save(p2);
 			
 			Profissional p3 = new Profissional();
 			p3.setCPF("1313131313");
-			p3.setNome("prof1");
+			p3.setNome("Martha Magalhães");
 			p3.setData_nascimento("02/10/2001");
-			p3.setEmail("prof3@prof.com");
+			p3.setEmail("mmagalhaes@prof.com");
 			p3.setSenha("pro");
-			p3.setSexo('M');
+			p3.setSexo('F');
 			p3.setEspecialidade("Ortopedia");
 			p3.setQualificacoes("code.pdf");
 			p3.setArea_atuacao("Medicina");
@@ -83,7 +83,7 @@ public class SAgendamentoApplication {
 			p4.setCPF("1313131314");
 			p4.setNome("Glauber");
 			p4.setData_nascimento("02/10/2001");
-			p4.setEmail("prof4@prof.com");
+			p4.setEmail("glauber.gg@prof.com");
 			p4.setSenha("pro");
 			p4.setSexo('M');
 			p4.setEspecialidade("Direito Tributario");
