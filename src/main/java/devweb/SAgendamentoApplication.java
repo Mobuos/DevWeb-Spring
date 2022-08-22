@@ -102,9 +102,9 @@ public class SAgendamentoApplication {
 			p5.setEmail("oli@prof.com");
 			p5.setSenha(encoder.encode("pro"));
 			p5.setSexo('M');
-			p5.setEspecialidade("Ilusões");
+			p5.setEspecialidade("Fantasmas");
 			p5.setQualificacoes("n/a");
-			p5.setArea_atuacao("Caça Fantasmas");
+			p5.setArea_atuacao("Medicina");
 			profissionalDAO.save(p5);
 
 			Admin adm = new Admin();
@@ -138,6 +138,13 @@ public class SAgendamentoApplication {
 			a3.setHora(tF.parse("11:00:00"));
 			agendamentoDAO.save(a3);
 
+			Agendamento a9 = new Agendamento();
+			a9.setCliente(c2);
+			a9.setProfissional(p2);
+			a9.setData(dF.parse("23-09-2022"));
+			a9.setHora(tF.parse("12:00:00"));
+			agendamentoDAO.save(a9);
+
 			// Horários Disponíveis
 			Agendamento a4 = new Agendamento();
 			a4.setAgendado(false);
@@ -152,6 +159,27 @@ public class SAgendamentoApplication {
 			a5.setData(dF.parse("18-09-2022"));
 			a5.setHora(tF.parse("12:00:00"));
 			agendamentoDAO.save(a5);
+
+			Agendamento a8 = new Agendamento();
+			a8.setAgendado(false);
+			a8.setProfissional(p1);
+			a8.setData(dF.parse("20-09-2022"));
+			a8.setHora(tF.parse("12:00:00"));
+			agendamentoDAO.save(a8);
+
+			Agendamento a6 = new Agendamento();
+			a6.setAgendado(false);
+			a6.setProfissional(p2);
+			a6.setData(dF.parse("17-09-2022"));
+			a6.setHora(tF.parse("11:00:00"));
+			agendamentoDAO.save(a6);
+
+			Agendamento a7 = new Agendamento();
+			a7.setAgendado(false);
+			a7.setProfissional(p2);
+			a7.setData(dF.parse("19-09-2022"));
+			a7.setHora(tF.parse("12:00:00"));
+			agendamentoDAO.save(a7);
 		};
 		
 	}
