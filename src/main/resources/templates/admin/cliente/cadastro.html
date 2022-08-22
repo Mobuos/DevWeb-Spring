@@ -41,10 +41,11 @@
 
 					<div class="form-group col-md-6">
 						<label for="cpf">CPF</label> 
-						<input type="text" class="form-control" id="cpf" placeholder=""
+						<input type="text" class="form-control" id="cpf" placeholder="___.___.___-__"
 							th:readonly="${cliente.CPF != null}"
 							autofocus="autofocus" th:field="*{CPF}"
-							th:classappend="${#fields.hasErrors('CPF')} ? is-invalid" />	                               
+							th:classappend="${#fields.hasErrors('CPF')} ? is-invalid" 
+							data-mask="000.000.000-00" data-mask-reverse="true" />	                               
 						<div class="invalid-feedback">
 							<span th:errors="*{CPF}"></span>
 						</div>

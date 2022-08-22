@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import devweb.dao.IUsuarioDAO;
-import devweb.domain.Usuario;
 
 @Controller
 @RequestMapping("/conta")
@@ -30,13 +29,13 @@ public class ContaController {
         String s = dao.findByEmail(email).getRole();
         
         if (s.equals("ROLE_CLIENTE")){
-            return "cliente/home";
+            return "redirect:/cliente/";
         } else if (s.equals("ROLE_PROFISSIONAL")) {
-            return "profissional/home";
+            return "redirect:/profissional/";
         } else if (s.equals("ROLE_ADMIN")){
-            return "admin/home";
+            return "redirect:/admin/";
         } else {
-            return "home";
+            return "redirect:/home/";
         }
     }
 }

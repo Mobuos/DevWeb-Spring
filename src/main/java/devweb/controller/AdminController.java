@@ -3,6 +3,7 @@ package devweb.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -44,12 +45,13 @@ public class AdminController {
 	}
 	
 	@PostMapping("cliente/salvar")
-	public String salvar(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr) {
+	public String salvar(@Valid Cliente cliente, BindingResult result, RedirectAttributes attr, BCryptPasswordEncoder encoder) {
 		
 		if (result.hasErrors()) {
 			return "admin/cliente/cadastro";
 		}
 		
+		cliente.setSenha(encoder.encode(cliente.getSenha()));
 		service.salvar(cliente);
 		attr.addFlashAttribute("sucess", "Cliente inserida com sucesso.");
 		return "redirect:/admin/cliente/listar";
@@ -98,12 +100,13 @@ public class AdminController {
 	}
 	
 	@PostMapping("profissional/salvar")
-	public String salvar(@Valid Profissional profissional, BindingResult result, RedirectAttributes attr) {
+	public String salvar(@Valid Profissional profissional, BindingResult result, RedirectAttributes attr, BCryptPasswordEncoder encoder) {
 		
 		if (result.hasErrors()) {
 			return "admin/profissional/cadastro";
 		}
 		
+		profissional.setSenha(encoder.encode(profissional.getSenha()));
 		servicep.salvar(profissional);
 		attr.addFlashAttribute("sucess", "Profissional inserido com sucesso.");
 		return "redirect:/admin/profissional/listar";

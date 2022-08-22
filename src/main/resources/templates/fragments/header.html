@@ -12,6 +12,34 @@
 					</button>
 					<a class="navbar-brand " th:href="@{/}">Sistema de Consultas</a>
 				</div>
+				<ul class="navbar-nav mr-auto">
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<div sec:authorize="isAuthenticated()">
+						<form th:action="@{/logout}" method="post">
+							<div class="form-inline">
+								<div class="row">
+									<div class="text-light col-sm-9 col-sm-offset-2">
+										<b><span>Usuário </span>:</b> <span sec:authentication="name"></span> | 
+										<b><span>Papel </span>:</b> <span sec:authentication="principal.authorities"></span>
+									</div>
+									<div class="col-sm-3 col-sm-offset-6">
+										<input type="submit" name="login-submit" id="login-submit"
+											class="form-control btn btn-info" value="Logout">
+									</div>
+								</div>
+							</div>
+							<!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+							<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+						</form>
+					</div>
+				</form>
+				<div class="col-md-6 col-md-offset-3">
+					
+				</div>
+
+
+			  
 			</div>
 		</nav>
 	</header>

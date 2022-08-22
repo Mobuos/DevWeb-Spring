@@ -6,26 +6,6 @@
 		<div class="container">
 			<span class="footer-copy">Trabalho de Desenvolvimento Web 1 - 2022/1</span>
 		</div>
-		<div class="container">
-			<div class="col-md-6 col-md-offset-3">
-				<div sec:authorize="isAuthenticated()">
-					<form th:action="@{/logout}" method="post">
-						<div class="form-group">
-							<div class="row">
-								<div class="col-sm-9 col-sm-offset-3">
-									<b><span>Usuário </span>:</b> <span sec:authentication="name"></span> | 
-									<b><span>Papel </span>:</b> <span sec:authentication="principal.authorities"></span>
-								</div>
-								<div class="col-sm-3 col-sm-offset-3">
-									<input type="submit" name="login-submit" id="login-submit"
-										class="form-control btn btn-info" value="Logout">
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
 	</footer>
 </body>
 </html>

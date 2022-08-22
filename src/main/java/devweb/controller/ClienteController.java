@@ -66,10 +66,13 @@ public class ClienteController {
 	}
 
 	@GetMapping("agendar/horario/{ID}")
-	public String agendarHorario(@PathVariable("ID") Long id, Agendamento agendamento, ModelMap model) {
+	public String agendarHorario(@PathVariable("ID") Long id, Agendamento agendamento, ModelMap model, Principal principal) {
 		Agendamento ag = service.buscarPorID(id).get();
 		ag.setAgendado(true);
-		ag.setCliente(servicec.buscarPorCPF("75823751853"));
+		System.out.println("EMAIL DO USUÁRIO LOGADO:::" + currentUserName(principal));
+		String cpf = uService.findByEmail(currentUserName(principal)).getCPF();
+		System.out.println("CPF +============" + cpf);
+		ag.setCliente(servicec.buscarPorCPF(cpf));
 		service.salvar(ag);
 		return "redirect:/cliente/";
 	}
