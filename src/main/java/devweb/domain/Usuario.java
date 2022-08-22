@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "Usuario")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario extends AbstractEntity<Long>{
+public class Usuario extends AbstractEntity<Long> {
 
 	@Column(nullable = true, unique = true, length = 14)
 	@NotBlank(message = "{NotBlank.usuario.CPF}")
@@ -28,6 +28,10 @@ public class Usuario extends AbstractEntity<Long>{
 	@NotBlank(message = "{NotBlank.usuario.nome}")
 	private String nome;
 
+	@NotBlank
+	@Column(nullable = false, length = 10)
+	private String role;
+
 	@Column(nullable = true, unique = false)
 	private Character sexo;
 
@@ -36,67 +40,89 @@ public class Usuario extends AbstractEntity<Long>{
 
 	@Column(nullable = true, unique = false, length = 50)
 	private String data_nascimento;
-	
+
 	// public Usuario() {
-	// 	this.CPF = null;
-	// 	this.nome = null;
-	// 	this.senha = null;
-	// 	this.sexo = null;
-	// 	this.telefone = null;
-	// 	this.data_nascimento = null;
+	// this.CPF = null;
+	// this.nome = null;
+	// this.senha = null;
+	// this.sexo = null;
+	// this.telefone = null;
+	// this.data_nascimento = null;
 	// }
 
-	// public Usuario(String CPF, String email, String senha, String nome, Character sexo, 
-	// 		String telefone, String data_nascimento) {
-    //     this.CPF = CPF;
-    //     this.email = email;
-    //     this.senha = senha;
-    //     this.nome = nome;
-    //     this.sexo = sexo;
-    //     this.telefone= telefone;
-    //     this.data_nascimento = data_nascimento;
-    // }
-	
+	// public Usuario(String CPF, String email, String senha, String nome, Character
+	// sexo,
+	// String telefone, String data_nascimento) {
+	// this.CPF = CPF;
+	// this.email = email;
+	// this.senha = senha;
+	// this.nome = nome;
+	// this.sexo = sexo;
+	// this.telefone= telefone;
+	// this.data_nascimento = data_nascimento;
+	// }
+
 	public String getCPF() {
 		return CPF;
 	}
+
 	public void setCPF(String cpf) {
 		CPF = cpf;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getSenha() {
 		return senha;
 	}
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public Character getSexo() {
 		return sexo;
 	}
+
 	public void setSexo(Character sexo) {
 		this.sexo = sexo;
 	}
+
 	public String getTelefone() {
 		return telefone;
 	}
+
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
 	public String getData_nascimento() {
 		return data_nascimento;
 	}
+
 	public void setData_nascimento(String data_nascimento) {
 		this.data_nascimento = data_nascimento;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 }
