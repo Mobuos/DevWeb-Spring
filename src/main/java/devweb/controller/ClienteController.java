@@ -27,6 +27,7 @@ public class ClienteController {
 	
 	@Autowired
 	private IAgendamentoService service;
+	
 	@Autowired
 	private IClienteService servicec;
 
@@ -49,6 +50,14 @@ public class ClienteController {
 			model.addAttribute("sucess", "Agendamento cancelado com sucesso.");
 		}
 		return clienteHome(model);
+	}
+
+	// Listar e cadastrar estão aqui
+	@GetMapping("agendar/{ID}")
+	public String agendar(@PathVariable("ID") Long id, Agendamento agendamento, ModelMap model) {
+		// TODO: Usar CPF do usuário profissional
+		model.addAttribute("horarios", service.buscarDisponivelPorProfissional(String.valueOf(id)));
+		return "cliente/agendar";
 	}
 	
 }

@@ -37,13 +37,13 @@
                             <th>Ações</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr th:each="agendamento : ${agendamentos}">
+					<tbody id="table_consultas_agendadas">
+						<tr th:each="agendamento,iter : ${agendamentos}">
 							<td th:text="${agendamento.id}"></td>
 							<td th:text="${agendamento.profissional.nome}"></td>
 							<td th:text="${agendamento.profissional.especialidade}"></td>
-							<td th:text="${agendamento.data}"></td>
-                            <td th:text="${agendamento.hora}"></td>
+							<td th:text="${agendamento.data}" th:id="${#strings.concat('data_',iter.index)}"></td>
+                            <td th:text="${agendamento.hora}" th:id="${#strings.concat('hora_',iter.index)}"></td>
 							<td colspan="2">
 								<button th:id="${#strings.concat('btn_cliente/horario/cancelar/',agendamento.id)}" 
 									type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">

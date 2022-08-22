@@ -72,5 +72,64 @@
 			})
 		});
 	</script>
+    <script async defer>
+    var url = window.location.href;
+    console.log(url);
+    
+    today = new Date();
+    
+    function minDateAble () {
+     	// NAO PERMITIR DATAS ANTERIORES AO DIA DE HOJE
+        humanMonth = today.getUTCMonth() + 1;
+
+        if (humanMonth < 10){
+        	humanMonth = '0' + humanMonth;
+        }
+
+        minDate = today.getFullYear() + "-" + humanMonth + "-" + today.getUTCDate();
+        const inputDateElement = document.querySelector("#data");
+        inputDateElement.setAttribute("min", minDate);
+    };
+    
+    function minDateCancelable () {
+        // NAO PERMITIR CANCELAMENTO COM MENOS DE 3 DIAS
+        numAgendamentos = document.getElementById("table_consultas_agendadas").rows.length;
+        var diasLimiteParaCancelar = 3;
+
+        for (var i = 0; i < numAgendamentos; i++)
+        {
+        	var agendamentoData = document.getElementById("data_"+i).innerText || document.getElementById("data_"+i).textContent;
+        	var agendamentoHora = document.getElementById("hora_"+i).innerText || document.getElementById("hora_"+i).textContent;
+        	var agendamentoDate = new Date(agendamentoData + "T" + agendamentoHora);
+        	
+        	// (dia da consulta) - (dia atual)
+        	var agendamentoDelta = agendamentoDate - today;
+        	var deltaEmDias = Math.floor(agendamentoDelta/(24 * 3600 * 1000));
+        	
+        	if (deltaEmDias < diasLimiteParaCancelar)
+        	{
+        		var table = document.getElementById("table_consultas_agendadas");
+        		var trElements = table.getElementsByTagName("tr");
+        		var btnCell = trElements[i].getElementsByTagName("td")[0];
+        		var btnIndex = btnCell.innerText || btnCell.textContent;
+        		//var btn = btnCell.getElementByTagName("button");
+        		//btn.setAttribute("disabled", "disabled");
+        		var btnCancel = document.getElementById("btn_cliente/horario/cancelar/"+btnIndex);
+        		btnCancel.setAttribute("disabled", "disabled");
+        	}
+        }
+    };
+    
+    switch (url) {
+    case 'http://localhost:8080/profissional/horario/cadastrar':
+    	minDateAble();
+    	break;
+    case 'http://localhost:8080/cliente/':
+    	minDateCancelable();
+    	break;
+    default:
+    	;
+    }
+    </script>
 </body>
 </html>
