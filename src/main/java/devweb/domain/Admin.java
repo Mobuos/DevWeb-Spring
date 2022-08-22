@@ -6,6 +6,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Admin")
 public class Admin extends Usuario{
+
+    public Admin() {
+        this.setRole("ADMIN");
+    }
     
     // public Admin(String cpf,
     //              String nome, 

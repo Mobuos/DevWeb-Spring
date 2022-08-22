@@ -12,15 +12,19 @@ import javax.validation.constraints.NotBlank;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends AbstractEntity<Long>{
 
+	@Column(nullable = false, unique = false, length = 20)
+	@NotBlank(message = "ROLE FALTANDO")
+	private String role;
+
 	@Column(nullable = true, unique = true, length = 14)
 	@NotBlank(message = "{NotBlank.usuario.CPF}")
 	private String CPF;
 
-	@Column(nullable = true, unique = false, length = 40)
+	@Column(nullable = true, unique = true, length = 40)
 	@NotBlank(message = "{NotBlank.usuario.email}")
 	private String email;
 
-	@Column(nullable = true, unique = false, length = 40)
+	@Column(nullable = true, unique = false, length = 64)
 	@NotBlank(message = "{NotBlank.usuario.senha}")
 	private String senha;
 
@@ -57,6 +61,14 @@ public class Usuario extends AbstractEntity<Long>{
     //     this.data_nascimento = data_nascimento;
     // }
 	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public String getCPF() {
 		return CPF;
 	}

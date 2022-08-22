@@ -7,9 +7,9 @@ import javax.persistence.Table;
 @Table(name = "Cliente")
 public class Cliente extends Usuario{	
 	
-	// public Cliente(){
-	// 	super();
-	// }
+	public Cliente(){
+		this.setRole("CLIENTE");
+	}
 
 	// public Cliente(String cpf,
 	// 			   String email, 

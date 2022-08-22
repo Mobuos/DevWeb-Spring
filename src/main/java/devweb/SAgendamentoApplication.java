@@ -6,10 +6,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import devweb.dao.IAdminDAO;
 import devweb.dao.IAgendamentoDAO;
 import devweb.dao.IClienteDAO;
 import devweb.dao.IProfissionalDAO;
+import devweb.domain.Admin;
 import devweb.domain.Agendamento;
 import devweb.domain.Cliente;
 import devweb.domain.Profissional;
@@ -22,7 +25,7 @@ public class SAgendamentoApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(IClienteDAO clienteDAO, IProfissionalDAO profissionalDAO, IAgendamentoDAO agendamentoDAO) {
+	public CommandLineRunner demo(IClienteDAO clienteDAO, IProfissionalDAO profissionalDAO, IAgendamentoDAO agendamentoDAO, IAdminDAO adminDAO, BCryptPasswordEncoder encoder) {
 		return (args) -> {
 
 			Cliente c1 = new Cliente();
@@ -30,7 +33,7 @@ public class SAgendamentoApplication {
 			c1.setNome("Miranda Miranda");
 			c1.setData_nascimento("02/10/2001");
 			c1.setEmail("copperbrjdmdini@gmail.com");
-			c1.setSenha("9544");
+			c1.setSenha(encoder.encode("cliente"));
 			c1.setSexo('M');
 			clienteDAO.save(c1);
 
@@ -39,7 +42,7 @@ public class SAgendamentoApplication {
 			c2.setNome("Paulo Sebastião");
 			c2.setData_nascimento("10/10/1998");
 			c2.setEmail("p.sebastiao@gmail.com");
-			c2.setSenha("928ab");
+			c2.setSenha(encoder.encode("cliente"));
 			c2.setSexo('M');
 			clienteDAO.save(c2);
 
@@ -48,7 +51,7 @@ public class SAgendamentoApplication {
 			p1.setNome("Alan Robertos");
 			p1.setData_nascimento("13/12/2000");
 			p1.setEmail("alan@prof.com");
-			p1.setSenha("112345");
+			p1.setSenha(encoder.encode("pro"));
 			p1.setSexo('M');
 			p1.setEspecialidade("Direito Digital");
 			p1.setQualificacoes("qualificado");
@@ -60,11 +63,12 @@ public class SAgendamentoApplication {
 			p2.setNome("Ana Paula");
 			p2.setData_nascimento("12/12/1986");
 			p2.setEmail("a.paula@prof.com");
-			p2.setSenha("54649");
+			p2.setSenha(encoder.encode("pro"));
 			p2.setSexo('F');
 			p2.setEspecialidade("Mecânica");
 			p2.setQualificacoes("qualificado");
 			p2.setArea_atuacao("Engenharia");
+			p2.setRole("PROFISSIONAL");
 			profissionalDAO.save(p2);
 			
 			Profissional p3 = new Profissional();
@@ -72,7 +76,7 @@ public class SAgendamentoApplication {
 			p3.setNome("Martha Magalhães");
 			p3.setData_nascimento("02/10/2001");
 			p3.setEmail("mmagalhaes@prof.com");
-			p3.setSenha("pro");
+			p3.setSenha(encoder.encode("pro"));
 			p3.setSexo('F');
 			p3.setEspecialidade("Ortopedia");
 			p3.setQualificacoes("code.pdf");
@@ -84,12 +88,19 @@ public class SAgendamentoApplication {
 			p4.setNome("Glauber");
 			p4.setData_nascimento("02/10/2001");
 			p4.setEmail("glauber.gg@prof.com");
-			p4.setSenha("pro");
+			p4.setSenha(encoder.encode("pro"));
 			p4.setSexo('M');
 			p4.setEspecialidade("Direito Tributario");
 			p4.setQualificacoes("code.pdf");
 			p4.setArea_atuacao("Advocacia");
 			profissionalDAO.save(p4);
+
+			// Admin adm = new Admin();
+			// adm.setCPF("adm");
+			// adm.setNome("Dev");
+			// adm.setEmail("adm@adm.com");
+			// adm.setSenha(encoder.encode("adm"));
+			// adminDAO.save(adm);
 
 			SimpleDateFormat dF = new SimpleDateFormat("dd-MM-yyyy"); // Date Formatter
 			SimpleDateFormat tF = new SimpleDateFormat("HH:mm:ss"); // Time Formatter
