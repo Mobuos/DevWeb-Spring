@@ -8,7 +8,7 @@ import javax.persistence.Table;
 public class Cliente extends Usuario{	
 	
 	public Cliente(){
-		this.setRole("CLIENTE");
+		this.setRole("ROLE_CLIENTE");
 	}
 
 	// public Cliente(String cpf,

@@ -8,7 +8,7 @@ import javax.persistence.Table;
 public class Admin extends Usuario{
 
     public Admin() {
-        this.setRole("ADMIN");
+        this.setRole("ROLE_ADMIN");
     }
     
     // public Admin(String cpf,

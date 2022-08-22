@@ -17,7 +17,7 @@ public class Profissional extends Usuario{
 	private String qualificacoes;
 	
 	public Profissional() {
-		this.setRole("PROFISSIONAL");
+		this.setRole("ROLE_PROFISSIONAL");
 	}
 	// public Profissional(String cpf,String nome, String senha, String email, Character sexo, String telefone, String data_nascimento, String area_atuacao, String especialidade, String qualificacoes) {
 	// 	super(cpf, email, senha, nome, sexo, telefone, data_nascimento);
