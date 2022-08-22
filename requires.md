@@ -35,3 +35,4 @@ Aqui estão todos os requisitos do sistema
 9.2 [x] nao permitir inserir horarios disponiveis para datas passadas
 9.3 [x] nao permitir o cancelamento por parte do cliente com menos de 3 dias de antecedencia por parte do cliente
 9.4 [x] nao permitir o cancelamento por parte do cliente com menos de 3 dias de antecedencia por parte do profissional
+
