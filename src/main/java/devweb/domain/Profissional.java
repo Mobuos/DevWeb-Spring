@@ -15,6 +15,9 @@ public class Profissional extends Usuario{
 
 	@Column(nullable = false, unique = false, length = 40)
 	private String qualificacoes;
+
+	@Column(nullable = true, unique = false, length = 40)
+	private String fileName;
 	
 	public Profissional() {
 		this.setRole("ROLE_PROFISSIONAL");
@@ -61,6 +64,15 @@ public class Profissional extends Usuario{
 
 	public void setQualificacoes(String qualificacoes) {
 		this.qualificacoes = qualificacoes;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	

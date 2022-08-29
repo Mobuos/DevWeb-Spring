@@ -11,16 +11,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import devweb.domain.Cliente;
 import devweb.domain.Profissional;
+import devweb.service.FileStorageService;
 import devweb.service.spec.IClienteService;
 import devweb.service.spec.IProfissionalService;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+
+	private FileStorageService fileStorageService;
+
+  public void FileUploadController(FileStorageService fileStorageService) {
+    this.fileStorageService = fileStorageService;
+  }
 	
 	@Autowired
 	private IClienteService service;
@@ -100,12 +109,12 @@ public class AdminController {
 	}
 	
 	@PostMapping("profissional/salvar")
-	public String salvar(@Valid Profissional profissional, BindingResult result, RedirectAttributes attr, BCryptPasswordEncoder encoder) {
+	public String salvar(@RequestParam(name = "file", required = false) MultipartFile file,@Valid Profissional profissional, BindingResult result, RedirectAttributes attr, BCryptPasswordEncoder encoder) {
 		
 		if (result.hasErrors()) {
 			return "admin/profissional/cadastro";
 		}
-		
+		fileStorageService.storeFile(file, profissional.getCPF());
 		profissional.setSenha(encoder.encode(profissional.getSenha()));
 		servicep.salvar(profissional);
 		attr.addFlashAttribute("sucess", "Profissional inserido com sucesso.");
