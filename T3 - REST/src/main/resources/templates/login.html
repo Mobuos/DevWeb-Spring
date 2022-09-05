@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<title th:text="login-submit"></title>
+</head>
+<body>
+	<section class="layout-content" layout:fragment="corpo">
+
+        <nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><i class="oi oi-caret-right"></i>
+						<span>Login</span></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container" id="login">
+			<div class="col-md-6 col-md-offset-3">
+				<h1>Página de Login</h1>
+				<form th:action="@{/login}" method="post">
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">
+							<span>Nome de usuário ou senha inválida</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="username">Email</label>: <input
+							type="email" id="username" name="username" class="form-control"
+							autofocus="autofocus" th:placeholder="Email">
+					</div>
+					<div class="form-group">
+						<label for="password">Senha</label>: <input
+							type="password" id="password" name="password"
+							class="form-control" th:placeholder="Senha">
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-3">
+								<input type="submit" name="login-submit" id="login-submit"
+									class="form-control btn btn-info" th:value="Entrar">
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<title>Sistema de Agendamento</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<!-- <link rel="icon" th:href="@{/image/favicon.png}" /> -->
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css}"
+	rel="stylesheet" />
+
+<!-- Custom styles for this template -->
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<header th:replace="fragments/header :: cabecalho">
+		<div>header</div>
+	</header>
+
+	<div class="layout-main">
+		<aside>
+			<nav th:replace="profissional/fragments/sidebar :: nav-sidebar">
+				<span>menu</span>
+			</nav>
+		</aside>
+
+		<section layout:fragment="corpo">
+			<div>conteúdo principal das páginas</div>
+		</section>
+	</div>
+
+	<footer th:replace="fragments/footer :: rodape">
+		<div>footer</div>
+	</footer>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/jquery-mask-plugin/dist/jquery.mask.min.js}"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<script type="text/javascript">
+		var url = '';
+		
+		$('button[id*="btn_"]').click(function() {
+			url = "http://localhost:8080/" + $(this).attr('id').split("_")[1]
+		});
+		
+		$('#ok_confirm').click(function() {
+			document.location.href = url;
+		});
+		
+		$(function() {
+			$('[data-toggle="popover"]').popover();
+		});
+
+		$(document).ready(function() {
+			$(".navbar-toggle").click(function() {
+				$(".sidebar").toggleClass("sidebar-open");
+			})
+		});
+	</script>
+    <script async defer>
+    var url = window.location.href;
+    console.log(url);
+    
+    today = new Date();
+    
+    function minDateAble () {
+     	// NAO PERMITIR DATAS ANTERIORES AO DIA DE HOJE
+        humanMonth = today.getUTCMonth() + 1;
+
+        if (humanMonth < 10){
+        	humanMonth = '0' + humanMonth;
+        }
+
+        minDate = today.getFullYear() + "-" + humanMonth + "-" + today.getUTCDate();
+        const inputDateElement = document.querySelector("#data");
+        inputDateElement.setAttribute("min", minDate);
+    };
+    
+    function minDateCancelable () {
+        // NAO PERMITIR CANCELAMENTO COM MENOS DE 3 DIAS
+        numAgendamentos = document.getElementById("table_consultas_agendadas").rows.length;
+        var diasLimiteParaCancelar = 3;
+
+        for (var i = 0; i < numAgendamentos; i++)
+        {
+        	var agendamentoData = document.getElementById("data_"+i).innerText || document.getElementById("data_"+i).textContent;
+        	var agendamentoHora = document.getElementById("hora_"+i).innerText || document.getElementById("hora_"+i).textContent;
+        	var agendamentoDate = new Date(agendamentoData + "T" + agendamentoHora);
+        	
+        	// (dia da consulta) - (dia atual)
+        	var agendamentoDelta = agendamentoDate - today;
+        	var deltaEmDias = Math.floor(agendamentoDelta/(24 * 3600 * 1000));
+        	
+        	if (deltaEmDias < diasLimiteParaCancelar)
+        	{
+        		var table = document.getElementById("table_consultas_agendadas");
+        		var trElements = table.getElementsByTagName("tr");
+        		var btnCell = trElements[i].getElementsByTagName("td")[0];
+        		var btnIndex = btnCell.innerText || btnCell.textContent;
+        		//var btn = btnCell.getElementByTagName("button");
+        		//btn.setAttribute("disabled", "disabled");
+        		var btnCancel = document.getElementById("btn_profissional/horario/cancelar/"+btnIndex);
+        		btnCancel.setAttribute("disabled", "disabled");
+        	}
+        }
+    };
+    
+    switch (url) {
+    case 'http://localhost:8080/profissional/horario/cadastrar':
+    	minDateAble();
+    	break;
+    case 'http://localhost:8080/profissional/':
+    	minDateCancelable();
+    	break;
+    default:
+    	;
+    }
+    </script>
+</body>
+</html>

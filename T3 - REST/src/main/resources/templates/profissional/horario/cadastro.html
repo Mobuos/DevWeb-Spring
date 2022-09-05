@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html layout:decorate="~{profissional/layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section class="layout-content" layout:fragment="corpo">
+
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><i class="oi oi-caret-right"></i>
+						<span>Cadastrar Horários Disponíveis</span></li>
+				</ul>
+				<a class="btn btn-primary btn-md" th:href="@{/profissional/horario/horarios}"
+					role="button"> <span class="oi oi-spreadsheet" title="Listar"
+					aria-hidden="true"></span> <span>Listar Horários</span>
+				</a>
+			</div>
+		</nav>
+
+		<span th:text="${agendamento.id}"></span>
+
+		<div class="container" id="cadastro">
+
+			<div th:replace="fragments/alert"></div>
+			
+			<form
+				th:action="${agendamento.id == null} ? @{/profissional/horario/salvar} : @{/profissional/horario/editar}"
+				th:object="${agendamento}" method="POST">
+				
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="data">Data</label> 
+						<input type="date" class="form-control" id="data" required
+							autofocus="autofocus" th:field="*{data}"
+							th:classappend="${#fields.hasErrors('data')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{data}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="hora">Horário</label> 
+						<input type="time" class="form-control" id="hora" required list="horas"
+							autofocus="autofocus" th:field="*{hora}"
+							th:classappend="${#fields.hasErrors('hora')} ? is-invalid" />
+			                <datalist id="horas">
+				                <option>09:00</option>
+				                <option>10:00</option>
+				                <option>11:00</option>
+				                <option>12:00</option>
+				                <option>13:00</option>
+				                <option>14:00</option>
+				                <option>15:00</option>
+				                <option>16:00</option>
+				                <option>17:00</option>
+				                <option>18:00</option>
+			                </datalist>		                               
+						<div class="invalid-feedback">
+							<span th:errors="*{hora}"></span>
+						</div>
+					</div>
+
+					<input type="hidden" id="agendado" th:field="*{agendado}" />
+					<input type="hidden" id="profissional" th:field="*{profissional}" />
+					<input type="hidden" id="id" th:field="*{id}" />
+				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+			</form>
+		</div>
+	</section>
+</body>
+</html>
