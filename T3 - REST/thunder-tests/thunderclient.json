@@ -32,5 +32,24 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "8ab557b1-2674-4e6a-9944-57997409a021",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "6a1ba117-71cf-4048-a8bc-e9191f046211",
+    "name": "Cria um cliente",
+    "url": "localhost:8080/api/clientes",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2022-09-05T19:47:25.492Z",
+    "modified": "2022-09-05T20:13:52.101Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"cpf\": \"13234568648\",\n  \"nome\": \"FFFFFFF\",\n  \"data_de_nascimento\": \"09/09/2009\",\n  \"email\": \"fernandes.fer@gmail.com\",\n  \"senha\": \"Teste\",\n  \"sexo\": \"M\",\n  \"telefone\": \"99 99999-9999\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
