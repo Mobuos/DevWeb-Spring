@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "a1e4f145-5ce2-4f8e-9945-f7c05b80fb30",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8080/clientes",
+    "url": "localhost:8080/clientes",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-09-05T19:24:30.498Z",
+    "modified": "2022-09-05T19:24:30.609Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]

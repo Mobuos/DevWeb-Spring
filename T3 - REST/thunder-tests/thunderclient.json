@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "aa1c6f68-e555-4cb9-b9d5-5f4982e0227f",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "6a1ba117-71cf-4048-a8bc-e9191f046211",
+    "name": "Retorna a lista de clientes",
+    "url": "localhost:8080/api/clientes",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-09-05T19:24:59.285Z",
+    "modified": "2022-09-05T19:26:20.140Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]
