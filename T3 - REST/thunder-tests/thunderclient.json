@@ -51,5 +51,30 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "a6d7077a-f4e0-419e-a4fe-abcbfa086af6",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "6a1ba117-71cf-4048-a8bc-e9191f046211",
+    "name": "Altera Cliente",
+    "url": "localhost:8080/api/clientes/{id}",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2022-09-05T20:16:06.723Z",
+    "modified": "2022-09-05T20:17:42.703Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "9",
+        "isPath": true
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"cpf\": \"13234568648\",\n  \"nome\": \"Fernandes Magal\",\n  \"data_de_nascimento\": \"09/09/2009\",\n  \"email\": \"fernandes.fer@gmail.com\",\n  \"senha\": \"Teste\",\n  \"sexo\": \"M\",\n  \"telefone\": \"99 99999-9999\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
