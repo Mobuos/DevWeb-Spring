@@ -76,5 +76,25 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "5f890205-53d9-4de4-a1b2-e6216303f434",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "6a1ba117-71cf-4048-a8bc-e9191f046211",
+    "name": "Deleta cliente",
+    "url": "localhost:8080/api/clientes/{id}",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2022-09-05T20:20:28.069Z",
+    "modified": "2022-09-05T20:22:04.782Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "9",
+        "isPath": true
+      }
+    ],
+    "tests": []
   }
 ]

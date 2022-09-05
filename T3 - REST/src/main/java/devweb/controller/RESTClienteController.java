@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -116,5 +117,18 @@ public class RESTClienteController {
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
 		}
- }
+    }
+
+    // Deleta um cliente
+    @DeleteMapping(path = "/api/clientes/{id}")
+    public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
+        Cliente cliente = cService.buscarPorId(id);
+        if (cliente == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            cService.excluir(cliente.getCPF());
+            return ResponseEntity.noContent().build();
+        }
+    }
 }
+
