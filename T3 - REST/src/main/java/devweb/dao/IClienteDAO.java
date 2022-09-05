@@ -10,6 +10,8 @@ import devweb.domain.Cliente;
 public interface IClienteDAO extends CrudRepository<Cliente, String>{
     Cliente findByCPF(String cpf);
 
+    Cliente findById(Long id);
+
     List<Cliente> findAll();
 
     Cliente save(Cliente cliente);

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,6 @@ import devweb.service.spec.IClienteService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
 public class RESTClienteController {
     
     @Autowired
@@ -52,7 +52,18 @@ public class RESTClienteController {
         cliente.setTelefone((String) json.get("telefone"));
     }
 
-    @GetMapping(path = "/clientes")
+    // Cria um cliente
+    // @GetMapping(path = "/clientes")
+    // public ResponseEntity<List<Cliente>> lista() {
+    //     List<Cliente> lista = cService.buscarTodos();
+    //     if (lista.isEmpty()) {
+    //         return ResponseEntity.notFound().build();
+    //     }
+    //     return ResponseEntity.ok(lista);
+    // }
+
+    // Retorna a lista de clientes
+    @GetMapping(path = "/api/clientes")
     public ResponseEntity<List<Cliente>> lista() {
         List<Cliente> lista = cService.buscarTodos();
         if (lista.isEmpty()) {
@@ -61,4 +72,23 @@ public class RESTClienteController {
         return ResponseEntity.ok(lista);
     }
 
+    // Retorna o cliente de id = {id}
+    @GetMapping(path = "/api/clientes/{id}")
+    public ResponseEntity<Cliente> lista(@PathVariable("id") long id) {
+        Cliente cliente = cService.buscarPorId(id);
+        if (cliente == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(cliente);
+    }
+
+    // Atualiza o cliente de id = {id}
+    // @GetMapping(path = "/clientes")
+    // public ResponseEntity<List<Cliente>> lista() {
+    //     List<Cliente> lista = cService.buscarTodos();
+    //     if (lista.isEmpty()) {
+    //         return ResponseEntity.notFound().build();
+    //     }
+    //     return ResponseEntity.ok(lista);
+    // }
 }

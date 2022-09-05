@@ -35,6 +35,11 @@ public class ClienteService implements IClienteService{
         return dao.findAll();
     }
 
+    @Override
+    public Cliente buscarPorId(Long id) {
+        return dao.findById(id);
+    }
+
     // @Transactional(readOnly = true)
     // public boolean clienteTemAgendamentos(String cpf) {
     //     return !dao.findByCPF(cpf).getAgendamentos().isEmpty()

@@ -12,5 +12,25 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "7286494a-d836-402c-a694-f696c0301e3a",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "6a1ba117-71cf-4048-a8bc-e9191f046211",
+    "name": "Retorna cliente de {id}",
+    "url": "localhost:8080/api/clientes/{id}",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-09-05T19:40:16.135Z",
+    "modified": "2022-09-05T19:43:51.734Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "1",
+        "isPath": true
+      }
+    ],
+    "tests": []
   }
 ]
