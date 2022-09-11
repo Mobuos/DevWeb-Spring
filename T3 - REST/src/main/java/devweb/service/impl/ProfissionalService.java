@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import devweb.domain.Cliente;
 import devweb.domain.Profissional;
 import devweb.dao.IProfissionalDAO;
 import devweb.service.spec.IProfissionalService;
@@ -29,9 +30,12 @@ public class ProfissionalService implements IProfissionalService{
     public Profissional buscarPorCPF(String cpf) {
         return dao.findByCPF(cpf);
     }
-
+    
+  
     @Transactional(readOnly = true)
     public List<Profissional> buscarTodos() {
         return dao.findAll();
-    } 
+    }
+
+	
 }
