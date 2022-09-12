@@ -81,6 +81,16 @@ public class RESTConsultaController {
         }
         return ResponseEntity.ok(lista);
     }
+
+    // Retorna a lista de agendamentos do profissional de id = {id}
+    @GetMapping(path = "/api/agendamentos/profissionais/{cpf}")
+    public ResponseEntity<List<Agendamento>> listaPorProfissional(@PathVariable("cpf") String cpf) {
+        List<Agendamento> lista = aService.buscarPorProfissional(cpf);
+        if (lista.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(lista);
+    }
 	
 }
 
