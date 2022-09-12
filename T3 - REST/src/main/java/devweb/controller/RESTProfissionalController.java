@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -89,17 +90,25 @@ public class RESTProfissionalController {
 
     // Retorna a lista de profissionais
     @GetMapping(path = "/api/profissionais")
-    public ResponseEntity<List<Profissional>> lista() {
-        List<Profissional> lista = pService.buscarTodos();
-        if (lista.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<List<Profissional>> lista(@RequestParam(required = false) String especialidade) {
+    	List<Profissional> lista = null;
+    	if(especialidade != null) {
+    		lista = pService.findByEspecialidade(especialidade);
+    	}else {
+    		
+    		lista = pService.buscarTodos();
+    		if (lista.isEmpty()) {
+    			return ResponseEntity.notFound().build();
+    		}	
+    	}
         return ResponseEntity.ok(lista);
     }
-
+    
+    
     // Retorna o cliente de id = {id}
     @GetMapping(path = "/api/profissionais/{id}")
-    public ResponseEntity<Profissional> lista(@PathVariable("id") Long id) {
+    public ResponseEntity<Profissional> lista(@PathVariable("id") Long id, @RequestParam(required = false) String especialidade) {
+    	
         Profissional profissional = pService.buscarPorId(id);
         if (profissional == null) {
             return ResponseEntity.notFound().build();
