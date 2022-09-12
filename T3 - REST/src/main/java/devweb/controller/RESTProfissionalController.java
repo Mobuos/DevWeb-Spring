@@ -103,6 +103,17 @@ public class RESTProfissionalController {
     	}
         return ResponseEntity.ok(lista);
     }
+
+	@GetMapping(path = "/api/profissionais/especialidades/{name}")
+    public ResponseEntity<List<Profissional>> listaEsp(@PathVariable("name") String name) {
+    	List<Profissional> lista = null;
+		lista = pService.findByEspecialidade(name);
+		if (lista.isEmpty()){
+			return ResponseEntity.notFound().build();
+		} else {
+			return ResponseEntity.ok(lista);
+		}
+    }
     
     
     // Retorna o cliente de id = {id}

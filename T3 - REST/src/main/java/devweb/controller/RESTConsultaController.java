@@ -53,7 +53,7 @@ public class RESTConsultaController {
     }
 	
     // Retorna a lista de agendamentos
-    @GetMapping(path = "/api/agendamentos")
+    @GetMapping(path = "/api/consultas")
     public ResponseEntity<List<Agendamento>> lista() {
         List<Agendamento> lista = aService.buscaTodos();
         if (lista.isEmpty()) {
@@ -63,7 +63,7 @@ public class RESTConsultaController {
     }
 
     // Retorna o agendamento de id = {id}
-    @GetMapping(path = "/api/agendamentos/{id}")
+    @GetMapping(path = "/api/consultas/{id}")
     public ResponseEntity<Optional<Agendamento>> lista(@PathVariable("id") long id) {
         Optional<Agendamento> agendamento = aService.buscarPorID(id);
         if (agendamento == null) {
@@ -73,7 +73,7 @@ public class RESTConsultaController {
     }
     
     // Retorna a lista de agendamentos do cliente de id = {id}
-    @GetMapping(path = "/api/agendamentos/clientes/{id}")
+    @GetMapping(path = "/api/consultas/clientes/{id}")
     public ResponseEntity<List<Agendamento>> listaPorCliente(@PathVariable("id") Long id) {
         List<Agendamento> lista = aService.buscarPorCliente(id);
         if (lista.isEmpty()) {
@@ -83,7 +83,7 @@ public class RESTConsultaController {
     }
 
     // Retorna a lista de agendamentos do profissional de id = {id}
-    @GetMapping(path = "/api/agendamentos/profissionais/{id}")
+    @GetMapping(path = "/api/consultas/profissionais/{id}")
     public ResponseEntity<List<Agendamento>> listaPorProfissional(@PathVariable("id") Long id) {
         List<Agendamento> lista = aService.buscarPorProfissional(id);
         if (lista.isEmpty()) {

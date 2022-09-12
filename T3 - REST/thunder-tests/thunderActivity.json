@@ -14,22 +14,31 @@
     "tests": []
   },
   {
-    "_id": "eb486cfb-a792-4749-a71c-548d5b75627b",
+    "_id": "2da6ad51-b984-496d-813b-18701b55b2a6",
     "colId": "history",
     "containerId": "",
-    "name": "localhost:8080/api/dbinit",
-    "url": "localhost:8080/api/dbinit",
-    "method": "POST",
+    "name": "localhost:8080/consultas",
+    "url": "localhost:8080/consultas",
+    "method": "GET",
     "sortNum": 0,
-    "created": "2022-09-12T00:16:17.397Z",
-    "modified": "2022-09-12T00:16:27.445Z",
+    "created": "2022-09-12T17:41:22.450Z",
+    "modified": "2022-09-12T17:41:24.336Z",
     "headers": [],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{}",
-      "form": []
-    },
+    "tests": []
+  },
+  {
+    "_id": "688b004b-e0d4-4122-a757-8b8573a9ef56",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8080/api/consultas",
+    "url": "localhost:8080/api/consultas",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-09-12T17:41:31.390Z",
+    "modified": "2022-09-12T17:43:09.806Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]

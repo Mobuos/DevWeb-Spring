@@ -22,12 +22,12 @@
     "method": "GET",
     "sortNum": 20000,
     "created": "2022-09-05T19:40:16.135Z",
-    "modified": "2022-09-11T23:21:46.527Z",
+    "modified": "2022-09-05T19:43:51.734Z",
     "headers": [],
     "params": [
       {
         "name": "id",
-        "value": "2",
+        "value": "1",
         "isPath": true
       }
     ],
@@ -40,9 +40,9 @@
     "name": "Cria um cliente",
     "url": "localhost:8080/api/clientes",
     "method": "POST",
-    "sortNum": 30000,
+    "sortNum": 5000,
     "created": "2022-09-05T19:47:25.492Z",
-    "modified": "2022-09-05T20:13:52.101Z",
+    "modified": "2022-09-12T17:22:21.987Z",
     "headers": [],
     "params": [],
     "body": {
@@ -86,7 +86,145 @@
     "method": "DELETE",
     "sortNum": 50000,
     "created": "2022-09-05T20:20:28.069Z",
-    "modified": "2022-09-11T23:30:53.530Z",
+    "modified": "2022-09-05T20:22:04.782Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "9",
+        "isPath": true
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "bd8bc36e-97d1-4608-bf2c-5a53172a65ab",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "ad68b78e-16dd-4d38-a4f7-544412677000",
+    "name": "Cria um profissional",
+    "url": "localhost:8080/api/clientes",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-09-12T17:22:33.299Z",
+    "modified": "2022-09-12T17:22:35.590Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"cpf\": \"13234568648\",\n  \"nome\": \"FFFFFFF\",\n  \"data_de_nascimento\": \"09/09/2009\",\n  \"email\": \"fernandes.fer@gmail.com\",\n  \"senha\": \"Teste\",\n  \"sexo\": \"M\",\n  \"telefone\": \"99 99999-9999\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8a11f60c-f0bc-40ea-b1b7-cf8faa42424d",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "ad68b78e-16dd-4d38-a4f7-544412677000",
+    "name": "Retorna a lista de profissionais",
+    "url": "localhost:8080/api/profissionais",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-09-12T17:22:38.511Z",
+    "modified": "2022-09-12T17:26:03.367Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "f1d7ee52-9e7c-4900-a57e-917f110a7bce",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "ad68b78e-16dd-4d38-a4f7-544412677000",
+    "name": "Retorna profissional de {id}",
+    "url": "localhost:8080/api/profissionais/{id}",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-09-12T17:22:43.988Z",
+    "modified": "2022-09-12T17:30:33.573Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "3",
+        "isPath": true
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "fb57ce74-51dc-4714-82f2-602bbf2548d5",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "ad68b78e-16dd-4d38-a4f7-544412677000",
+    "name": "Altera profissional",
+    "url": "localhost:8080/api/profissionais/{id}",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2022-09-12T17:22:48.565Z",
+    "modified": "2022-09-12T17:40:34.008Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "3",
+        "isPath": true
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"cpf\": \"13234568648\",\n  \"nome\": \"Fernandes Magal\",\n  \"data_de_nascimento\": \"09/09/2009\",\n  \"email\": \"fernandes.fer@gmail.com\",\n  \"senha\": \"Teste\",\n  \"sexo\": \"M\",\n  \"telefone\": \"99 99999-9999\",\n  \"qualificacoes\": \"teste/png.png\",\n  \"especialidade\": \"Fantasmas\",\n  \"area_atuacao\": \"Encanamento\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "3a4363fb-7b7a-49c6-94aa-529c41022ca9",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "ad68b78e-16dd-4d38-a4f7-544412677000",
+    "name": "Deleta cliente Copy",
+    "url": "localhost:8080/api/clientes/{id}",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2022-09-12T17:22:54.586Z",
+    "modified": "2022-09-12T17:22:57.389Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "9",
+        "isPath": true
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "1033ce80-c37b-46f7-aaea-37cd2041b0e6",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "ad68b78e-16dd-4d38-a4f7-544412677000",
+    "name": "Retorna profissional de especialidade {name}",
+    "url": "localhost:8080/api/profissionais/especialidades/{name}",
+    "method": "GET",
+    "sortNum": 35000,
+    "created": "2022-09-12T17:29:30.932Z",
+    "modified": "2022-09-12T17:38:09.508Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "name",
+        "value": "Direito Digital",
+        "isPath": true
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "7a10c44c-b879-4de4-9acf-95137ab07041",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "afe90fdd-5c25-4350-9420-82e91198ecad",
+    "name": "Retorna consulta de {id}",
+    "url": "localhost:8080/api/consultas/{id}",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-09-12T17:43:38.355Z",
+    "modified": "2022-09-12T17:45:03.203Z",
     "headers": [],
     "params": [
       {
@@ -98,34 +236,54 @@
     "tests": []
   },
   {
-    "_id": "0e6f3a99-78a9-4d82-9ef9-ee7a3f4832a6",
+    "_id": "24260173-624a-4943-b251-61d8519dd5ba",
     "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
-    "containerId": "ad68b78e-16dd-4d38-a4f7-544412677000",
-    "name": "Retorna a lista de profissionais",
-    "url": "localhost:8080/api/profissionais",
+    "containerId": "afe90fdd-5c25-4350-9420-82e91198ecad",
+    "name": "Retorna consultas",
+    "url": "localhost:8080/api/consultas",
     "method": "GET",
-    "sortNum": 10000,
-    "created": "2022-09-11T23:45:05.947Z",
-    "modified": "2022-09-11T23:45:14.598Z",
+    "sortNum": 5000,
+    "created": "2022-09-12T17:44:19.882Z",
+    "modified": "2022-09-12T17:44:54.682Z",
     "headers": [],
     "params": [],
     "tests": []
   },
   {
-    "_id": "bccad52e-d215-4f65-bf88-78a997a93a5c",
+    "_id": "237f708c-b69a-4d5e-bfcc-f14c15b40f93",
     "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
-    "containerId": "ad68b78e-16dd-4d38-a4f7-544412677000",
-    "name": "Deleta Profissional",
-    "url": "localhost:8080/api/profissionais/{cpf}",
-    "method": "DELETE",
+    "containerId": "afe90fdd-5c25-4350-9420-82e91198ecad",
+    "name": "Retorna consulta de cliente de {id}",
+    "url": "localhost:8080/api/consultas/clientes/{id}",
+    "method": "GET",
     "sortNum": 20000,
-    "created": "2022-09-11T23:45:29.017Z",
-    "modified": "2022-09-11T23:51:51.344Z",
+    "created": "2022-09-12T17:45:26.271Z",
+    "modified": "2022-09-12T17:45:50.901Z",
     "headers": [],
     "params": [
       {
-        "name": "cpf",
-        "value": "12345678910",
+        "name": "id",
+        "value": "2",
+        "isPath": true
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "b8f117da-1782-422b-a568-4c5d433b8487",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "afe90fdd-5c25-4350-9420-82e91198ecad",
+    "name": "Retorna consulta de profissional de {id}",
+    "url": "localhost:8080/api/consultas/profissionais/{id}",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-09-12T17:46:01.978Z",
+    "modified": "2022-09-12T17:46:10.910Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "id",
+        "value": "3",
         "isPath": true
       }
     ],
