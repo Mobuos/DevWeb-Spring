@@ -79,4 +79,8 @@ public class AgendamentoService implements IAgendamentoService{
     public Optional<Agendamento> buscarPorID(Long id) {
         return dao.findById(id);
     }
+    
+    public List<Agendamento> buscaTodos(){
+    	return (List<Agendamento>) dao.findAll();
+    }
 }

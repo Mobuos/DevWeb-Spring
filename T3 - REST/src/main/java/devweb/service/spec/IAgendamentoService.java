@@ -17,4 +17,6 @@ public interface IAgendamentoService {
     void excluir(Agendamento agendamento);
 
     Optional<Agendamento> buscarPorID(Long id);
+    
+    List<Agendamento> buscaTodos();
 }
