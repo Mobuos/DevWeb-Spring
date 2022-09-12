@@ -22,12 +22,12 @@
     "method": "GET",
     "sortNum": 20000,
     "created": "2022-09-05T19:40:16.135Z",
-    "modified": "2022-09-05T19:43:51.734Z",
+    "modified": "2022-09-11T23:21:46.527Z",
     "headers": [],
     "params": [
       {
         "name": "id",
-        "value": "1",
+        "value": "2",
         "isPath": true
       }
     ],
@@ -86,12 +86,46 @@
     "method": "DELETE",
     "sortNum": 50000,
     "created": "2022-09-05T20:20:28.069Z",
-    "modified": "2022-09-05T20:22:04.782Z",
+    "modified": "2022-09-11T23:30:53.530Z",
     "headers": [],
     "params": [
       {
         "name": "id",
-        "value": "9",
+        "value": "2",
+        "isPath": true
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "0e6f3a99-78a9-4d82-9ef9-ee7a3f4832a6",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "ad68b78e-16dd-4d38-a4f7-544412677000",
+    "name": "Retorna a lista de profissionais",
+    "url": "localhost:8080/api/profissionais",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-09-11T23:45:05.947Z",
+    "modified": "2022-09-11T23:45:14.598Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "bccad52e-d215-4f65-bf88-78a997a93a5c",
+    "colId": "d74d1e9c-bef0-40bf-9f99-ccacd3c56929",
+    "containerId": "ad68b78e-16dd-4d38-a4f7-544412677000",
+    "name": "Deleta Profissional",
+    "url": "localhost:8080/api/profissionais/{cpf}",
+    "method": "DELETE",
+    "sortNum": 20000,
+    "created": "2022-09-11T23:45:29.017Z",
+    "modified": "2022-09-11T23:51:51.344Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "cpf",
+        "value": "12345678910",
         "isPath": true
       }
     ],

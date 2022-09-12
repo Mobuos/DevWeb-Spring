@@ -12,5 +12,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "eb486cfb-a792-4749-a71c-548d5b75627b",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8080/api/dbinit",
+    "url": "localhost:8080/api/dbinit",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2022-09-12T00:16:17.397Z",
+    "modified": "2022-09-12T00:16:27.445Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{}",
+      "form": []
+    },
+    "tests": []
   }
 ]

@@ -1,29 +1,42 @@
-package devweb;
+package devweb.controller;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import devweb.dao.IAdminDAO;
 import devweb.dao.IAgendamentoDAO;
 import devweb.dao.IClienteDAO;
 import devweb.dao.IProfissionalDAO;
-import devweb.dao.IUsuarioDAO;
 import devweb.domain.Admin;
 import devweb.domain.Agendamento;
 import devweb.domain.Cliente;
 import devweb.domain.Profissional;
 import devweb.service.spec.IClienteService;
 
-@SpringBootApplication
-public class SAgendamentoApplication implements CommandLineRunner{
-
-	@Autowired
+@CrossOrigin
+@RestController
+public class RESTDBInit {
+    
+    @Autowired
 	private IClienteDAO clienteDAO;
 	
 	@Autowired
@@ -35,25 +48,23 @@ public class SAgendamentoApplication implements CommandLineRunner{
 	@Autowired 
 	private IAdminDAO adminDAO;
 
-	@Autowired 
-	private IUsuarioDAO usuarioDAO;
-
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
-	public static void main(String[] args) {
-		SpringApplication.run(SAgendamentoApplication.class, args);
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		Cliente c1 = new Cliente();
+    // Cria um cliente
+    @PostMapping(path = "/api/dbinit")
+	@ResponseBody
+	public ResponseEntity<Boolean> cria(@RequestBody JSONObject json){
+        try {
+        Cliente c1 = new Cliente();
+        c1.setRole("ROLE_CLIENTE");
 		c1.setCPF("13443189861");
 		c1.setNome("Miranda Miranda");
 		c1.setData_nascimento("02/10/2001");
 		c1.setEmail("miranda@gmail.com");
 		c1.setSenha(encoder.encode("cliente"));
 		c1.setSexo('M');
+        c1.setTelefone("1234");
 		clienteDAO.save(c1);
 
 		Cliente c2 = new Cliente();
@@ -199,5 +210,13 @@ public class SAgendamentoApplication implements CommandLineRunner{
 		a7.setData(dF.parse("19-09-2022"));
 		a7.setHora(tF.parse("12:00:00"));
 		agendamentoDAO.save(a7);
-	}
+
+        return ResponseEntity.noContent().build();
+        }
+        catch (Exception e){
+            System.out.println("Falha ao iniciar DB");
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
+

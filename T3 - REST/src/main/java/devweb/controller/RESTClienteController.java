@@ -121,13 +121,13 @@ public class RESTClienteController {
 
     // Deleta um cliente
     @DeleteMapping(path = "/api/clientes/{id}")
-    public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
+    public ResponseEntity<Cliente> remove(@PathVariable("id") long id) {
         Cliente cliente = cService.buscarPorId(id);
         if (cliente == null) {
             return ResponseEntity.notFound().build();
         } else {
             cService.excluir(cliente.getCPF());
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.ok(cliente);
         }
     }
 }
