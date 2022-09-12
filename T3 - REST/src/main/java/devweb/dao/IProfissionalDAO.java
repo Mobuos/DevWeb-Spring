@@ -11,9 +11,13 @@ import devweb.domain.Profissional;
 @Repository
 public interface IProfissionalDAO extends CrudRepository<Profissional, String>{
     Profissional findByCPF(String cpf);
+    
+    Profissional findById(Long id);
 
     List<Profissional> findAll();
-
+    
+    List<Profissional> findByEspecialidade(String especialidade);
+    
     Profissional save(Profissional profissional);
 
     void deleteByCPF(String cpf);

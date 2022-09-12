@@ -98,21 +98,21 @@ public class RESTProfissionalController {
     }
 
     // Retorna o cliente de id = {id}
-    @GetMapping(path = "/api/profissionais/{cpf}")
-    public ResponseEntity<Profissional> lista(@PathVariable("cpf") String cpf) {
-        Profissional profissional = pService.buscarPorCPF(cpf);
+    @GetMapping(path = "/api/profissionais/{id}")
+    public ResponseEntity<Profissional> lista(@PathVariable("id") Long id) {
+        Profissional profissional = pService.buscarPorId(id);
         if (profissional == null) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(profissional);
     }
 
-    // Atualiza o profissional de cpf = {cpf}
-    @PutMapping(path = "/api/profissionais/{cpf}")
-	public ResponseEntity<Profissional> atualiza(@PathVariable("cpf") String cpf, @RequestBody JSONObject json) {
+    // Atualiza o profissional de id = {id}
+    @PutMapping(path = "/api/profissionais/{id}")
+	public ResponseEntity<Profissional> atualiza(@PathVariable("id") Long id, @RequestBody JSONObject json) {
 		try {
 			if (isJSONValid(json.toString())) {
-				Profissional profissional = pService.buscarPorCPF(cpf);
+				Profissional profissional = pService.buscarPorId(id);
 				if (profissional == null) {
 					return ResponseEntity.notFound().build();
 				} else {
@@ -129,9 +129,9 @@ public class RESTProfissionalController {
     }
 
     // Deleta um cliente
-    @DeleteMapping(path = "/api/profissionais/{cpf}")
-    public ResponseEntity<Boolean> remove(@PathVariable("cpf") String cpf) {
-        Profissional profissional = pService.buscarPorCPF(cpf);
+    @DeleteMapping(path = "/api/profissionais/{id}")
+    public ResponseEntity<Boolean> remove(@PathVariable("id") Long id) {
+        Profissional profissional = pService.buscarPorId(id);
         if (profissional == null) {
             return ResponseEntity.notFound().build();
         } else {

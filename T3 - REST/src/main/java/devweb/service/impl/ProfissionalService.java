@@ -38,6 +38,15 @@ public class ProfissionalService implements IProfissionalService{
         return dao.findByCPF(cpf);
     }
     
+    @Override
+    public Profissional buscarPorId(Long id) {
+        return dao.findById(id);
+    }
+    
+    @Transactional(readOnly = true)
+    public List<Profissional> findByEspecialidade(String especialidade) {
+        return dao.findByEspecialidade(especialidade);
+    }
   
     @Transactional(readOnly = true)
     public List<Profissional> buscarTodos() {
