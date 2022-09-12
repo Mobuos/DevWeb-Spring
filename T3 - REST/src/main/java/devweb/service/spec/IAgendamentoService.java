@@ -9,6 +9,10 @@ public interface IAgendamentoService {
     List<Agendamento> buscarPorCliente(String cpf);
 
     List<Agendamento> buscarPorProfissional(String cpf);
+    
+    List<Agendamento> buscarPorCliente(Long id);
+
+    List<Agendamento> buscarPorProfissional(Long id);
 
     List<Agendamento> buscarDisponivelPorProfissional(String cpf);
 

@@ -43,8 +43,9 @@ public class AgendamentoService implements IAgendamentoService{
     }
 
     @Transactional(readOnly = true)
-    public List<Agendamento> buscarPorProfissional(String cpf) {
-        Profissional p = pDao.findByCPF(cpf);
+    public List<Agendamento> buscarPorProfissional(Long id) {
+        //Profissional p = pDao.findByCPF(cpf);
+    	Profissional p = pDao.findById(id);
         List<Agendamento> todos = dao.findAllByProfissional(p);
         List<Agendamento> agendados = new ArrayList<>();
         for (Agendamento agendamento : todos){
@@ -83,4 +84,24 @@ public class AgendamentoService implements IAgendamentoService{
     public List<Agendamento> buscaTodos(){
     	return (List<Agendamento>) dao.findAll();
     }
+
+	@Override
+	public List<Agendamento> buscarPorProfissional(String cpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Agendamento> buscarPorCliente(Long id) {
+        Cliente c = cDao.findById(id);
+        List<Agendamento> todos = dao.findAllByCliente(c);
+        List<Agendamento> agendados = new ArrayList<>();
+        for (Agendamento agendamento : todos){
+            if (agendamento.getAgendado()){
+                agendados.add(agendamento);
+            }
+        }
+
+        return agendados;
+	}
 }

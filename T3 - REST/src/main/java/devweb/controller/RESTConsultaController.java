@@ -73,9 +73,9 @@ public class RESTConsultaController {
     }
     
     // Retorna a lista de agendamentos do cliente de id = {id}
-    @GetMapping(path = "/api/agendamentos/clientes/{cpf}")
-    public ResponseEntity<List<Agendamento>> listaPorCliente(@PathVariable("cpf") String cpf) {
-        List<Agendamento> lista = aService.buscarPorCliente(cpf);
+    @GetMapping(path = "/api/agendamentos/clientes/{id}")
+    public ResponseEntity<List<Agendamento>> listaPorCliente(@PathVariable("id") Long id) {
+        List<Agendamento> lista = aService.buscarPorCliente(id);
         if (lista.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
@@ -83,9 +83,9 @@ public class RESTConsultaController {
     }
 
     // Retorna a lista de agendamentos do profissional de id = {id}
-    @GetMapping(path = "/api/agendamentos/profissionais/{cpf}")
-    public ResponseEntity<List<Agendamento>> listaPorProfissional(@PathVariable("cpf") String cpf) {
-        List<Agendamento> lista = aService.buscarPorProfissional(cpf);
+    @GetMapping(path = "/api/agendamentos/profissionais/{id}")
+    public ResponseEntity<List<Agendamento>> listaPorProfissional(@PathVariable("id") Long id) {
+        List<Agendamento> lista = aService.buscarPorProfissional(id);
         if (lista.isEmpty()) {
             return ResponseEntity.notFound().build();
         }

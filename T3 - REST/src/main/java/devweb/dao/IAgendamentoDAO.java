@@ -16,6 +16,8 @@ public interface IAgendamentoDAO extends CrudRepository<Agendamento, Long>{
     List<Agendamento> findAllByCliente(Cliente cliente);
 
     List<Agendamento> findAllByProfissional(Profissional profissional);
+    
+    List<Agendamento> findAllByProfissional(Long id);
 
     Agendamento save(Agendamento agendamento);
 
